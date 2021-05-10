@@ -60,5 +60,32 @@ func checkBrackets(start string) string {
 }
 
 // @lc code=end
+func isValid2(s string) bool {
 
+	dept := 0
+	dmap := make(map[int]byte)
+	checkBrackets := map[byte]byte{
+		'{': '}',
+		'(': ')',
+		'[': ']',
+	}
+	for i := 0; i < len(s); i++ {
+		switch s[i] {
+		case '[', '{', '(':
+			dept++
+			dmap[dept] = checkBrackets[s[i]]
+		case ']', '}', ')':
+			if s[i] == dmap[dept] {
+				delete(dmap, dept)
+				dept--
+			} else {
+				return false
+			}
+		}
+	}
+	if dept != 0 {
+		return false
+	}
+	return true
+}
 

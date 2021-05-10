@@ -6,29 +6,25 @@
 
 // @lc code=start
 func isValid(s string) bool {
-
-	dept := 0
-	dmap := make(map[int]byte)
-	checkBrackets := map[byte]byte{
+	bmap := map[rune]rune{
 		'{': '}',
-		'(': ')',
 		'[': ']',
+		'(': ')',
 	}
-	for i := 0; i < len(s); i++ {
-		switch s[i] {
-		case '[', '{', '(':
-			dept++
-			dmap[dept] = checkBrackets[s[i]]
-		case ']', '}', ')':
-			if s[i] == dmap[dept] {
-				delete(dmap, dept)
-				dept--
+	sslice := make([]rune, 0)
+
+	for _, val := range s {
+		if mval, ok := bmap[val]; ok {
+			sslice = append(sslice, mval)
+		} else {
+			if len(sslice) > 0 && val == sslice[len(sslice)-1] {
+				sslice = sslice[:len(sslice)-1]
 			} else {
 				return false
 			}
 		}
 	}
-	if dept != 0 {
+	if len(sslice) > 0 {
 		return false
 	}
 	return true
