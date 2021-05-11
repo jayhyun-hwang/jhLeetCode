@@ -1,10 +1,14 @@
-/*
- * @lc app=leetcode id=66 lang=golang
- *
- * [66] Plus One
- */
+package main_test
 
-// @lc code=start
+import (
+	"fmt"
+	"testing"
+)
+
+func TestMain(t *testing.T) {
+	tf := plusOne([]int{1, 2, 3})
+	fmt.Println("tf = ", tf)
+}
 func plusOne(digits []int) []int {
 	return isNine(digits, len(digits)-1)
 }
@@ -19,8 +23,7 @@ func isNine(nlist []int, idx int) []int {
 		}
 	} else {
 		nlist[idx] += 1
+		return nlist
 	}
-	return nlist
+	return nil
 }
-
-// @lc code=end
