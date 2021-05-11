@@ -1,2 +1,2 @@
 # jhLeetCode
-LeetCode problems solution
+Solutions to LeetCode problems, written in go
