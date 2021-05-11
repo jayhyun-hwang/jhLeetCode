@@ -6,7 +6,9 @@ import (
 )
 
 func TestMain(t *testing.T) {
-	tf := plusOne([]int{1, 2, 3})
+
+	tf := "plusOne([]int{1, 2, 3})" //test function here
+
 	fmt.Println("tf = ", tf)
 }
 func plusOne(digits []int) []int {
