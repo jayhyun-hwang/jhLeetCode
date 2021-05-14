@@ -9,5 +9,9 @@ func TestMain(t *testing.T) {
 
 	tf := "test param" //test function here
 
-	fmt.Println("tf = ", tf)
+	fmt.Println("tf123 = ", tf)
+}
+
+func letterCombinations(digits string) []string {
+	return nil
 }
