@@ -32,7 +32,6 @@ func letterCombinations(digits string) []string {
 }
 
 func (constVal *constValue) recString(digits string, idx int) []string {
-
 	if idx == len(digits) {
 		return constVal.resultArr
 	}

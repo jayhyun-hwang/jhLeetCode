@@ -1,37 +1,23 @@
-package main_test
+/*
+ * @lc app=leetcode id=17 lang=golang
+ *
+ * [17] Letter Combinations of a Phone Number
+ */
 
-import (
-	"fmt"
-	"testing"
-)
-
-func TestMain(t *testing.T) {
-
-	//tf := "test param" //test function here
-	tf := "23" //test function here
-
-	fmt.Println("tf = ", tf)
-	fmt.Println(letterCombinations(tf)) //print testFunc return value
-}
-
-type conValue struct {
-	nmap      map[byte][]rune
-	resString []string
-}
-
+// @lc code=start
 func letterCombinations(digits string) []string {
 	if digits == "" {
 		return nil
 	}
 	nmap := map[byte][]byte{
-		'2': {'a', 'b', 'c'},
-		'3': {'d', 'e', 'f'},
-		'4': {'g', 'h', 'i'},
-		'5': {'j', 'k', 'l'},
-		'6': {'m', 'n', 'o'},
-		'7': {'p', 'q', 'r', 's'},
-		'8': {'t', 'u', 'v'},
-		'9': {'w', 'x', 'y', 'z'},
+		'2': []byte{'a', 'b', 'c'},
+		'3': []byte{'d', 'e', 'f'},
+		'4': []byte{'g', 'h', 'i'},
+		'5': []byte{'j', 'k', 'l'},
+		'6': []byte{'m', 'n', 'o'},
+		'7': []byte{'p', 'q', 'r', 's'},
+		'8': []byte{'t', 'u', 'v'},
+		'9': []byte{'w', 'x', 'y', 'z'},
 	}
 	var resultArr []string
 	oneStr := []byte{}
@@ -54,4 +40,4 @@ func recString(nmap map[byte][]byte, digits string, idx int, oneStr []byte, resu
 	return *resultArr
 }
 
-//s := string([]rune{'\u0041', '\u0042', '\u0043', '\u20AC', -1})
+// @lc code=end
