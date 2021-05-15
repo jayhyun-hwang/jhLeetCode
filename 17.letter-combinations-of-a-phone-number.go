@@ -5,39 +5,47 @@
  */
 
 // @lc code=start
-var nmap = map[byte][]rune{
-	'2': {'a', 'b', 'c'},
-	'3': {'d', 'e', 'f'},
-	'4': {'g', 'h', 'i'},
-	'5': {'j', 'k', 'l'},
-	'6': {'m', 'n', 'o'},
-	'7': {'p', 'q', 'r', 's'},
-	'8': {'t', 'u', 'v'},
-	'9': {'w', 'x', 'y', 'z'},
+type constValue struct {
+	nmap      map[byte][]byte
+	resultArr []string
+	oneStr    []byte
 }
-var resString = []string{}
 
 func letterCombinations(digits string) []string {
-	oneStr := []rune{}
+	if digits == "" {
+		return nil
+	}
+	var constVal constValue
+	constVal.nmap = map[byte][]byte{
+		'2': []byte{'a', 'b', 'c'},
+		'3': []byte{'d', 'e', 'f'},
+		'4': []byte{'g', 'h', 'i'},
+		'5': []byte{'j', 'k', 'l'},
+		'6': []byte{'m', 'n', 'o'},
+		'7': []byte{'p', 'q', 'r', 's'},
+		'8': []byte{'t', 'u', 'v'},
+		'9': []byte{'w', 'x', 'y', 'z'},
+	}
 
-	resString = recString(digits, 0, oneStr)
-	return resString
+	constVal.resultArr = constVal.recString(digits, 0)
+	return constVal.resultArr
 }
-func recString(digits string, idx int, oneStr []rune) []string {
+
+func (constVal *constValue) recString(digits string, idx int) []string {
+
 	if idx == len(digits) {
-		return resString
+		return constVal.resultArr
 	}
-	for _, valDigits := range nmap[digits[idx]] {
-		oneStr = append(oneStr, valDigits)
+	for _, valDigits := range constVal.nmap[digits[idx]] {
+		constVal.oneStr = append(constVal.oneStr, valDigits)
 		if idx == len(digits)-1 {
-			resString = append(resString, string(oneStr))
+			constVal.resultArr = append(constVal.resultArr, string(constVal.oneStr))
 		} else {
-			resString = recString(digits, idx+1, oneStr)
+			constVal.resultArr = constVal.recString(digits, idx+1)
 		}
-		oneStr = oneStr[:len(oneStr)-1]
+		constVal.oneStr = constVal.oneStr[:len(constVal.oneStr)-1]
 	}
-	return resString
+	return constVal.resultArr
 }
 
 // @lc code=end
-
