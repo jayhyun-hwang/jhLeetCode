@@ -6,23 +6,30 @@
 
 // @lc code=start
 type MinStack struct {
-    
+    stack []int
 }
 
 
 /** initialize your data structure here. */
 func Constructor() MinStack {
-    
+    return new MinStack()
 }
 
 
 func (this *MinStack) Push(val int)  {
-    
+	if len(this.stack) < 1 {
+		this.stack = append(this.stack, val)
+		return
+	}
+	if val 
 }
 
 
 func (this *MinStack) Pop()  {
-    
+	if len(this.stack) < 1 {
+		return
+	}
+    this.stack = this.stack[:len(this.stack)-1]
 }
 
 
