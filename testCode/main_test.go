@@ -14,44 +14,51 @@ func TestMain(t *testing.T) {
 	fmt.Println(letterCombinations(tf)) //print testFunc return value
 }
 
-type conValue struct {
-	nmap      map[byte][]rune
-	resString []string
+type MinStack struct {
+	stack []int
+	min   int
 }
 
-func letterCombinations(digits string) []string {
-	if digits == "" {
+/** initialize your data structure here. */
+func Constructor() MinStack {
+	return new(MinStack)
+}
+
+func (this *MinStack) Push(val int) {
+	if len(this.stack) < 1 {
+		this.stack = append(this.stack, val)
+		return
+	}
+}
+
+func (this *MinStack) Pop() {
+	if len(this.stack) < 1 {
+		return
+	}
+	this.stack = this.stack[:len(this.stack)-1]
+}
+
+func (this *MinStack) Top() int {
+	return this.stack[len(this.stack)-1]
+}
+
+func (this *MinStack) GetMin() int {
+	if len(this.stack) < 1 {
 		return nil
 	}
-	nmap := map[byte][]byte{
-		'2': {'a', 'b', 'c'},
-		'3': {'d', 'e', 'f'},
-		'4': {'g', 'h', 'i'},
-		'5': {'j', 'k', 'l'},
-		'6': {'m', 'n', 'o'},
-		'7': {'p', 'q', 'r', 's'},
-		'8': {'t', 'u', 'v'},
-		'9': {'w', 'x', 'y', 'z'},
-	}
-	var resultArr []string
-	oneStr := []byte{}
-
-	return recString(nmap, digits, 0, oneStr, &resultArr)
+	this.min = this.stack[0]
+	forGetMin(0)
 }
-func recString(nmap map[byte][]byte, digits string, idx int, oneStr []byte, resultArr *[]string) []string {
-	if idx == len(digits) {
-		return *resultArr
+func (this *MinStack) forGetMin(i int) int {
+	if len(this.stack) == i {
+		return this.min
 	}
-	for _, valDigits := range nmap[digits[idx]] {
-		oneStr = append(oneStr, valDigits)
-		if idx == len(digits)-1 {
-			*resultArr = append(*resultArr, string(oneStr))
-		} else {
-			*resultArr = recString(nmap, digits, idx+1, oneStr, resultArr)
-		}
-		oneStr = oneStr[:len(oneStr)-1]
+	compareIdx := this.stack[i]
+	if this.min > compareIdx {
+		this.min = compareIdx
 	}
-	return *resultArr
+	i++
+	return forGetMin(i)
 }
 
 //s := string([]rune{'\u0041', '\u0042', '\u0043', '\u20AC', -1})
