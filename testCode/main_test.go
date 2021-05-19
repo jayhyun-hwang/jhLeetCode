@@ -11,54 +11,42 @@ func TestMain(t *testing.T) {
 	tf := "23" //test function here
 
 	fmt.Println("tf = ", tf)
-	fmt.Println(letterCombinations(tf)) //print testFunc return value
+	fmt.Println(tf) //print testFunc return value
 }
 
-type MinStack struct {
-	stack []int
-	min   int
+type NumsObj struct {
+	intArr [2]int
+	res    []string
 }
 
-/** initialize your data structure here. */
-func Constructor() MinStack {
-	return new(MinStack)
+func summaryRanges(nums []int) []string {
+	obj := new(NumsObj)
+	if len(nums) > 0 {
+		obj.intArr[0] = nums[0]
+		obj.recRange(nums, 0)
+	}
+	return obj.res
 }
-
-func (this *MinStack) Push(val int) {
-	if len(this.stack) < 1 {
-		this.stack = append(this.stack, val)
+func (obj *NumsObj) recRange(nums []int, i int) {
+	if len(nums)-1 == i {
+		if obj.intArr[0] > obj.intArr[1] {
+			obj.res = append(obj.res, (string)(obj.intArr[0]))
+		}
 		return
 	}
-}
-
-func (this *MinStack) Pop() {
-	if len(this.stack) < 1 {
-		return
-	}
-	this.stack = this.stack[:len(this.stack)-1]
-}
-
-func (this *MinStack) Top() int {
-	return this.stack[len(this.stack)-1]
-}
-
-func (this *MinStack) GetMin() int {
-	if len(this.stack) < 1 {
-		return nil
-	}
-	this.min = this.stack[0]
-	forGetMin(0)
-}
-func (this *MinStack) forGetMin(i int) int {
-	if len(this.stack) == i {
-		return this.min
-	}
-	compareIdx := this.stack[i]
-	if this.min > compareIdx {
-		this.min = compareIdx
+	if nums[i]+1 != nums[i+1] {
+		obj.intArr[1] = nums[i]
+		var strEle string
+		if obj.intArr[0] == obj.intArr[1] {
+			strEle = (string)(obj.intArr[0])
+		} else {
+			strEle = (string)(obj.intArr[0]) + "->" + (string)(obj.intArr[1])
+		}
+		obj.res = append(obj.res, strEle)
+		obj.intArr[0] = nums[i+1]
+	} else {
+		obj.intArr[1] = nums[i+1]
 	}
 	i++
-	return forGetMin(i)
+	obj.recRange(nums, i)
 }
-
-//s := string([]rune{'\u0041', '\u0042', '\u0043', '\u20AC', -1})
