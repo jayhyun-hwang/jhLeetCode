@@ -37,12 +37,12 @@ func (obj *NumsObj) recRange(nums []int, i int) {
 
 func (obj *NumsObj) insertStr() {
 	var strEle string
-    	if obj.intArr[0] >= obj.intArr[1] {
-    	    strEle = strconv.Itoa(obj.intArr[0])
-    	} else {
-	        strEle = strconv.Itoa(obj.intArr[0]) + "->" + strconv.Itoa(obj.intArr[1])
-    	}
-    	obj.res = append(obj.res, strEle)
+	if obj.intArr[0] >= obj.intArr[1] {
+		strEle = strconv.Itoa(obj.intArr[0])
+	} else {
+		strEle = strconv.Itoa(obj.intArr[0]) + "->" + strconv.Itoa(obj.intArr[1])
+	}
+	obj.res = append(obj.res, strEle)
 }
 
 // @lc code=end
