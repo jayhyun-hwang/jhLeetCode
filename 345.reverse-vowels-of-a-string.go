@@ -5,8 +5,22 @@
  */
 
 // @lc code=start
-func reverseVowels(s string) string {
-    
+type Obj struct {
+	idxArr []int
+	stack  []byte
+	resStr string
 }
+
+func reverseVowels(s string) string {
+	obj := new(Obj)
+	//make stack and put vowels: stack
+	//store vowels' index: idxArr
+
+}
+
+func (obj *Obj) getRes(s string) {
+
+}
+
 // @lc code=end
 
