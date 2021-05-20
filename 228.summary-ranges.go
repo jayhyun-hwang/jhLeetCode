@@ -14,16 +14,14 @@ func summaryRanges(nums []int) []string {
 	obj := new(NumsObj)
 	if len(nums) > 0 {
 		obj.intArr[0] = nums[0]
-		//obj.intArr[1] = nums[0]
-		obj.intArr[1] = nums[0] - 1
+		obj.intArr[1] = nums[0]
 		obj.recRange(nums, 0)
 	}
 	return obj.res
 }
 func (obj *NumsObj) recRange(nums []int, i int) {
 	if len(nums)-1 == i {
-		// >=
-		if obj.intArr[0] > obj.intArr[1] {
+		if obj.intArr[0] >= obj.intArr[1] {
 			obj.res = append(obj.res, strconv.Itoa(obj.intArr[0]))
 		} else {
 			obj.res = append(obj.res, strconv.Itoa(obj.intArr[0])+"->"+strconv.Itoa(obj.intArr[1]))
@@ -31,10 +29,8 @@ func (obj *NumsObj) recRange(nums []int, i int) {
 		return
 	}
 	if nums[i]+1 != nums[i+1] {
-		//delete
-		obj.intArr[1] = nums[i]
 		var strEle string
-		if obj.intArr[0] == obj.intArr[1] {
+		if obj.intArr[0] >= obj.intArr[1] {
 			strEle = strconv.Itoa(obj.intArr[0])
 		} else {
 			strEle = strconv.Itoa(obj.intArr[0]) + "->" + strconv.Itoa(obj.intArr[1])
