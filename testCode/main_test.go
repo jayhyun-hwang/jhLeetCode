@@ -14,45 +14,29 @@ func TestMain(t *testing.T) {
 	s := string(bArr)
 	fmt.Println("value = ", s)
 
-	findTheDifference("", "y")
-
 	//fmt.Println(summaryRanges([]int{-1})) //print testFunc return value
 }
 
 type Obj struct {
+	res        int
+	bmap       map[byte]int
+	minusCount int
 }
 
-func findTheDifference(s string, t string) byte {
-	tbarr := []byte(t)
+func longestPalindrome(s string) int {
+	bArr := []byte(s)
 	bmap := make(map[byte]int)
-
-	for _, val := range tbarr {
-		/*if _, ok := bmap[val]; ok {
-		bmap[val] += 1
-		} else {
-			bmap[val] = 0
-		}*/
-		bmap[val] += 1
-
+	minusCount := 0
+	for _, val := range bArr {
+		bmap[val]++
 	}
-
-	sbarr := []byte(s)
-	for _, val := range sbarr {
-		/*if _, ok := bmap[val]; ok {
-		bmap[val] += 1
-		} else {
-			bmap[val] = 0
-		}*/
-		bmap[val] += 1
-	}
-	for i, mval := range bmap {
-		fmt.Println("value= ", mval)
-		fmt.Println("key= ", i)
-
-		if mval%2 == 1 {
-
-			return i
+	for _, val := range bmap {
+		if val%2 == 1 {
+			minusCount++
 		}
 	}
-	return 0
+	if minusCount > 1 {
+		return len(s) - minusCount - 1
+	}
+	return len(s)
 }

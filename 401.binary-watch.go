@@ -5,8 +5,19 @@
  */
 
 // @lc code=start
-func readBinaryWatch(turnedOn int) []string {
-    
+type Obj struct {
+	res   []string
+	param int
 }
+
+func readBinaryWatch(turnedOn int) []string {
+	obj := new(Obj)
+	obj.param = turnedOn
+
+}
+func (obj *Obj) recurFind() {
+
+}
+
 // @lc code=end
 
