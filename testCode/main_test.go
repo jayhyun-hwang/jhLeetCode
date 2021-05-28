@@ -18,15 +18,14 @@ func TestMain(t *testing.T) {
 }
 
 func findDisappearedNumbers(nums []int) []int {
-
-	imap := make(map[int]bool, len(nums))
-	for _, val := range nums {
-		imap[val] = true
+	iArr := make([]bool, len(nums))
+	for i := 0; i < len(nums); i++ {
+		iArr[nums[i]-1] = true
 	}
-	res := make([]int, 0, len(nums))
-	for i := 1; i <= len(nums); i++ {
-		if !imap[i] {
-			res = append(res, i)
+	res := []int{}
+	for i := 0; i < len(iArr); i++ {
+		if !iArr[i] {
+			res = append(res, i+1)
 		}
 	}
 	return res
