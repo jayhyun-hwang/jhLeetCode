@@ -7,24 +7,18 @@
 // @lc code=start
 
 type Obj struct {
-	paramStr string
-	sLen     int
-	idx      int
-	res      bool
+	strLen int
 }
 
 func repeatedSubstringPattern(s string) bool {
 	obj := new(Obj)
-	obj.sLen = len(s)
-	obj.paramStr = s
-	if obj.sLen == 1 {
-		return true
-	}
-
-	return false
+	obj.str
+	return obj.recurFunc(s)
 }
-func (obj *Obj) recurFunc() {
-
+func (obj *Obj) recurFunc(s string) bool {
+	if len(s) 
+	
+	return true
 }
 
 // @lc code=end

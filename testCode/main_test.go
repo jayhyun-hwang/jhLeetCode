@@ -2,6 +2,7 @@ package main_test
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 )
 
@@ -13,20 +14,34 @@ func TestMain(t *testing.T) {
 	fmt.Println("value = ", bArr)
 	s := string(bArr)
 	fmt.Println("value = ", s)
-	_ = findDisappearedNumbers([]int{4, 3, 2, 7, 8, 2, 3, 1})
+
+	str := "abcabcabcd"
+	sStr := strings.Split(str, str[:1])
+	fmt.Println(sStr)
+	_ = repeatedSubstringPattern("anananb")
 	//fmt.Println(summaryRanges([]int{-1})) //print testFunc return value
 }
 
-func findDisappearedNumbers(nums []int) []int {
-	iArr := make([]bool, len(nums))
-	for i := 0; i < len(nums); i++ {
-		iArr[nums[i]-1] = true
+type Obj struct {
+	strLen int
+}
+
+func repeatedSubstringPattern(s string) bool {
+	obj := new(Obj)
+	obj.strLen = 1
+	return obj.recurFunc(s)
+}
+func (obj *Obj) recurFunc(s string) bool {
+	if len(s)%obj.strLen != 0 {
+		obj.strLen++
+		return obj.recurFunc(s)
 	}
-	res := []int{}
-	for i := 0; i < len(iArr); i++ {
-		if !iArr[i] {
-			res = append(res, i+1)
-		}
+	if obj.strLen == len(s)/2+1 {
+		return false
 	}
-	return res
+	for i := 1; obj.strLen*i > len(s); i++ {
+
+	}
+
+	return true
 }
