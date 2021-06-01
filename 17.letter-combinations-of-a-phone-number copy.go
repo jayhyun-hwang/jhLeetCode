@@ -28,6 +28,7 @@ func recString(nmap map[byte][]byte, digits string, idx int, oneStr []byte, resu
 	if idx == len(digits) {
 		return *resultArr
 	}
+
 	for _, valDigits := range nmap[digits[idx]] {
 		oneStr = append(oneStr, valDigits)
 		if idx == len(digits)-1 {
