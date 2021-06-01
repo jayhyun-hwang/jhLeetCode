@@ -7,6 +7,7 @@
 // @lc code=start
 func findRelativeRanks(score []int) []string {
     
+	
 }
 // @lc code=end
 
