@@ -6,16 +6,21 @@
 
 // @lc code=start
 type constValue struct {
-	nmap      map[byte][]byte
+	//dial map
+	nmap map[byte][]byte
+	//res
 	resultArr []string
-	oneStr    []byte
+	//1 string to check
+	oneStr []byte
 }
 
 func letterCombinations(digits string) []string {
 	if digits == "" {
 		return nil
 	}
+
 	var constVal constValue
+	//make dial map
 	constVal.nmap = map[byte][]byte{
 		'2': []byte{'a', 'b', 'c'},
 		'3': []byte{'d', 'e', 'f'},
