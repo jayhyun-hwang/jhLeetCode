@@ -18,33 +18,27 @@ func TestMain(t *testing.T) {
 	str := "abcabcabcd"
 	sStr := strings.Split(str, str[:1])
 	fmt.Println(sStr)
-	b := repeatedSubstringPattern("ababab")
-	_ = b
 	//fmt.Println(summaryRanges([]int{-1})) //print testFunc return value
 }
 
 type Obj struct {
-	strLen int
+	grid    [][]int
+	visited map[int]map[int]bool
+	rowLen  int
+	colLen  int
+	res     int
 }
 
-func repeatedSubstringPattern(s string) bool {
+func islandPerimeter(grid [][]int) int {
 	obj := new(Obj)
-	obj.strLen = 1
-	return obj.recurFunc(s)
+	obj.grid = grid
+	obj.rowLen = len(grid)
+	obj.colLen = len(grid[0])
+
+	obj.findPerimeter(0, 0)
+	return obj.res
 }
-func (obj *Obj) recurFunc(s string) bool {
-	if len(s)%obj.strLen != 0 {
-		obj.strLen++
-		return obj.recurFunc(s)
-	}
-	if obj.strLen >= len(s)/2+1 {
-		return false
-	}
-	for i := 1; obj.strLen*i < len(s); i++ {
-		if s[:obj.strLen] != s[obj.strLen*i:obj.strLen*(i+1)] {
-			obj.strLen++
-			return obj.recurFunc(s)
-		}
-	}
-	return true
+
+func (obj *Obj) findPerimeter(r int, c int) {
+
 }
