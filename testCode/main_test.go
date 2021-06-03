@@ -23,7 +23,7 @@ func TestMain(t *testing.T) {
 
 type Obj struct {
 	grid    [][]int
-	visited map[int]map[int]bool
+	counted map[int]map[int]bool
 	rowLen  int
 	colLen  int
 	res     int
@@ -35,10 +35,31 @@ func islandPerimeter(grid [][]int) int {
 	obj.rowLen = len(grid)
 	obj.colLen = len(grid[0])
 
-	obj.findPerimeter(0, 0)
+	//direction == {up:1, right:2, down:3, left:4}
+	obj.findPerimeter(0, 0, 2)
 	return obj.res
 }
 
-func (obj *Obj) findPerimeter(r int, c int) {
-
+func (obj *Obj) findPerimeter(r int, c int, dir int) {
+	if r < 0 {
+		return
+	}
+	if c >= obj.rowLen {
+		return
+	}
+	if r >= obj.colLen {
+		return
+	}
+	if c < 0 {
+		return
+	}
+	switch dir {
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	}
+	//if next value ==0 || len==idx { res++ }
+	//do all direction except from direction
+	//add counted
 }
