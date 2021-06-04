@@ -24,6 +24,7 @@ func TestMain(t *testing.T) {
 type Obj struct {
 	grid    [][]int
 	counted map[int]map[int]bool
+	next    [][]int
 	rowLen  int
 	colLen  int
 	res     int
