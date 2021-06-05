@@ -1,7 +1,6 @@
 package main_test
 
 import (
-	"fmt"
 	"testing"
 )
 
@@ -48,61 +47,14 @@ func (obj *Obj) findPerimeter(r int, c int, dir int) {
 	//do all direction except from direction
 	//add counted
 }
-
-type Obj2 struct {
-	res           float64
-	res2          float64
-	monthSave     float64
-	seed          float64
-	monthInterest float64
-	months        float64
-}
-
-func (obj *Obj2) calcul() {
-
-	for i := 0; i < int(obj.months); i++ {
-		obj.seed += obj.monthSave
-		obj.seed *= obj.monthInterest
-	}
-	obj.res = obj.seed
-}
-func (obj *Obj2) calcul2() {
-
-	for i := 0; i < int(obj.months); i++ {
-		obj.seed += obj.monthSave
-		obj.res += obj.seed*obj.monthInterest - obj.seed
-	}
-	obj.res += obj.seed
-}
 func TestMain(t *testing.T) {
-
-	obj := new(Obj2)
-	obj.monthSave = 500000
-	obj.seed = 0.0
-	obj.monthInterest = 1.02
-	obj.months = 360
-	obj.calcul()
-	fmt.Printf("복리결과= %f\n", obj.res)
-	obj2 := new(Obj2)
-	obj2.monthSave = 500000
-	obj2.seed = 0.0
-	obj2.monthInterest = 1.02
-	obj2.months = 360
-	obj2.calcul2()
-	fmt.Printf("단리결과= %f\n", obj2.res)
+	// tf := "test param" //test function here
+	// tf := "ghdfasdf" //test function here
+	// bArr := []byte(tf)
+	// fmt.Println("value = ", bArr)
+	// s := string(bArr)
+	// fmt.Println("value = ", s)
+	// str := "abcabcabcd"
+	// sStr := strings.Split(str, str[:1])
+	// fmt.Println(sStr)
 }
-
-//매달 50만원
-//수익률 10프로
-//연수
-
-//tf := "test param" //test function here
-// tf := "ghdfasdf" //test function here
-// bArr := []byte(tf)
-// fmt.Println("value = ", bArr)
-// s := string(bArr)
-// fmt.Println("value = ", s)
-
-// str := "abcabcabcd"
-// sStr := strings.Split(str, str[:1])
-// fmt.Println(sStr)
