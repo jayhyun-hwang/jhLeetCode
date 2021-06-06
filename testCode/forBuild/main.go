@@ -43,6 +43,7 @@ LABEL1:
 	if err != nil {
 		fmt.Scanln()
 		fmt.Println("숫자만 입력해주세요 수현님...")
+		inSeed = 0
 		goto LABEL1
 	}
 	fmt.Println()
