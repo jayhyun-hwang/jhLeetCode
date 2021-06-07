@@ -1,6 +1,7 @@
 package main_test
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -28,18 +29,21 @@ func (obj *Obj) findPerimeter(r int, c int, dir int) {
 	if r < 0 {
 		return
 	}
-	if c >= obj.rowLen {
-		return
-	}
-	if r >= obj.colLen {
-		return
-	}
 	if c < 0 {
+		return
+	}
+	if r >= obj.rowLen {
+		return
+	}
+	if c >= obj.colLen {
 		return
 	}
 	switch dir {
 	case 1:
 	case 2:
+		if obj.grid[r][c] == 1 {
+
+		}
 	case 3:
 	case 4:
 	}
@@ -57,4 +61,34 @@ func TestMain(t *testing.T) {
 	// str := "abcabcabcd"
 	// sStr := strings.Split(str, str[:1])
 	// fmt.Println(sStr)
+	arr1 := [][]int{
+		{0, 1, 0},
+		{1, 1, 1},
+		{0, 1, 0},
+		{1, 1, 0},
+	}
+	fmt.Println(arr1)
+	fmt.Println(len(arr1))
+	fmt.Println(len(arr1[0]))
 }
+
+// func islandPerimeter(grid [][]int) int {
+//     var(
+//         res int
+//         l = len(grid[0])
+//     )
+//     for i := 0; i < len(grid); i++ {
+//         for j := 0; j < l; j++ {
+//             if grid[i][j] == 1 {
+//                 res += 4
+//                 if i > 0 && grid[i-1][j] == 1 {
+//                     res -= 2
+//                 }
+//                 if j > 0 && grid[i][j-1] == 1 {
+//                     res -= 2
+//                 }
+//             }
+//         }
+//     }
+//     return res
+// }
