@@ -92,3 +92,25 @@ func TestMain(t *testing.T) {
 //     }
 //     return res
 // }
+func (obj Obj) recCol(r int, c int) {
+	if r >= obj.rowLen {
+		return
+	}
+	obj.recRow(r, c)
+	obj.recCol(r+1, c)
+}
+func (obj Obj) recRow(r int, c int) {
+	if c >= obj.colLen {
+		return
+	}
+	if obj.grid[r][c] == 1 {
+		obj.res += 4
+		if r > 0 && obj.grid[r-1][c] == 1 {
+			obj.res -= 2
+		}
+		if c > 0 && obj.grid[r][c-1] == 1 {
+			obj.res -= 2
+		}
+	}
+	obj.recRow(r, c+1)
+}
