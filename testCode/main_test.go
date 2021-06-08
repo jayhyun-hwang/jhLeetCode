@@ -2,55 +2,11 @@ package main_test
 
 import (
 	"fmt"
+	"strings"
 	"testing"
 )
 
-type Obj struct {
-	grid    [][]int
-	counted map[int]map[int]bool
-	next    [][]int
-	rowLen  int
-	colLen  int
-	res     int
-}
-
-func islandPerimeter(grid [][]int) int {
-	obj := new(Obj)
-	obj.grid = grid
-	obj.rowLen = len(grid)
-	obj.colLen = len(grid[0])
-
-	//direction == {up:1, right:2, down:3, left:4}
-	obj.findPerimeter(0, 0, 2)
-	return obj.res
-}
-
-func (obj *Obj) findPerimeter(r int, c int, dir int) {
-	if r < 0 {
-		return
-	}
-	if c < 0 {
-		return
-	}
-	if r >= obj.rowLen {
-		return
-	}
-	if c >= obj.colLen {
-		return
-	}
-	switch dir {
-	case 1:
-	case 2:
-		if obj.grid[r][c] == 1 {
-
-		}
-	case 3:
-	case 4:
-	}
-	//if next value ==0 || len==idx { res++ }
-	//do all direction except from direction
-	//add counted
-}
+//main
 func TestMain(t *testing.T) {
 	// tf := "test param" //test function here
 	// tf := "ghdfasdf" //test function here
@@ -61,56 +17,55 @@ func TestMain(t *testing.T) {
 	// str := "abcabcabcd"
 	// sStr := strings.Split(str, str[:1])
 	// fmt.Println(sStr)
-	arr1 := [][]int{
-		{0, 1, 0},
-		{1, 1, 1},
-		{0, 1, 0},
-		{1, 1, 0},
-	}
-	fmt.Println(arr1)
-	fmt.Println(len(arr1))
-	fmt.Println(len(arr1[0]))
-}
 
-// func islandPerimeter(grid [][]int) int {
-//     var(
-//         res int
-//         l = len(grid[0])
-//     )
-//     for i := 0; i < len(grid); i++ {
-//         for j := 0; j < l; j++ {
-//             if grid[i][j] == 1 {
-//                 res += 4
-//                 if i > 0 && grid[i-1][j] == 1 {
-//                     res -= 2
-//                 }
-//                 if j > 0 && grid[i][j-1] == 1 {
-//                     res -= 2
-//                 }
-//             }
-//         }
-//     }
-//     return res
-// }
-func (obj Obj) recCol(r int, c int) {
-	if r >= obj.rowLen {
-		return
-	}
-	obj.recRow(r, c)
-	obj.recCol(r+1, c)
-}
-func (obj Obj) recRow(r int, c int) {
-	if c >= obj.colLen {
-		return
-	}
-	if obj.grid[r][c] == 1 {
-		obj.res += 4
-		if r > 0 && obj.grid[r-1][c] == 1 {
-			obj.res -= 2
-		}
-		if c > 0 && obj.grid[r][c-1] == 1 {
-			obj.res -= 2
+	param := "2-5g-3-J"
+	sArr := strings.SplitN(param, "-", 2)
+	fmt.Println(sArr)
+
+	var r byte
+	r = '-'
+	fmt.Println('a')
+	fmt.Println(int('A'))
+	fmt.Println(int('z'))
+	fmt.Println(int('Z'))
+	fmt.Println("\n@", r)
+	//123 > byte value > 96, -32
+	//'-' == 45
+	k := 4
+	idx := k
+	needDash := true
+	resR := make([]byte, 0)
+	for i := 0; i < k; i++ {
+		resR = append(resR, param[i])
+		if param[i] == '-' {
+			needDash = false
+			idx = i
+			break
 		}
 	}
-	obj.recRow(r, c+1)
+	if needDash {
+		resR = append(resR, '-')
+	}
+	count := 0
+	for i := idx; i < len(param); i++ {
+		switch {
+		case param[i] == '-':
+			continue
+		case param[i] < 123 && param[i] > 96:
+			resR = append(resR, param[i]-32)
+			count++
+		default:
+			resR = append(resR, param[i])
+			count++
+		}
+		if count == k {
+			resR = append(resR, '-')
+			count = 0
+		}
+
+	}
+	if resR[len(resR)-1] == '-' {
+		resR = resR[:len(resR)-1]
+	}
+	fmt.Println(string(resR))
 }
