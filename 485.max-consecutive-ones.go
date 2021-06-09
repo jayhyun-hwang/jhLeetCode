@@ -5,8 +5,34 @@
  */
 
 // @lc code=start
-func findMaxConsecutiveOnes(nums []int) int {
-    
+type Obj struct {
+	maxNum int
 }
+
+func (obj *Obj) compare(n int) {
+	if n > obj.maxNum {
+		obj.maxNum = n
+	}
+}
+func findMaxConsecutiveOnes(nums []int) int {
+	obj := new(Obj)
+	count := 0
+	nums = append(nums, 0)
+	for _, num := range nums {
+		if num == 1 {
+			count++
+		} else {
+			obj.compare(count)
+			count = 0
+		}
+
+	}
+	return obj.maxNum
+}
+
+// 42/42 cases passed (36 ms)
+// Your runtime beats 91.69 % of golang submissions
+// Your memory usage beats 7.05 % of golang submissions (6.7 MB)
+
 // @lc code=end
 

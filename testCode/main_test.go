@@ -1,87 +1,44 @@
 package main_test
 
 import (
-	"fmt"
-	"strings"
 	"testing"
 )
 
-//main
-func TestMain(t *testing.T) {
-	// tf := "test param" //test function here
-	// tf := "ghdfasdf" //test function here
-	// bArr := []byte(tf)
-	// fmt.Println("value = ", bArr)
-	// s := string(bArr)
-	// fmt.Println("value = ", s)
-	// str := "abcabcabcd"
-	// sStr := strings.Split(str, str[:1])
-	// fmt.Println(sStr)
+type Obj struct {
+	maxNum int
+}
 
-	param := "2-5g-3-J"
-	sArr := strings.SplitN(param, "-", 2)
-	fmt.Println(sArr)
-
-	var r byte
-	r = '-'
-	fmt.Println('a')
-	fmt.Println(int('A'))
-	fmt.Println(int('z'))
-	fmt.Println(int('Z'))
-	fmt.Println("\n@", r)
-	//123 > byte value > 96, -32
-	//'-' == 45
-	k := 4
-	idx := k
-	needDash := true
-	resR := make([]byte, 0)
-	for i := 0; i < k; i++ {
-		resR = append(resR, param[i])
-		if param[i] == '-' {
-			needDash = false
-			idx = i
-			break
-		}
+func (obj *Obj) compare(n int) {
+	if n > obj.maxNum {
+		obj.maxNum = n
 	}
-	if needDash {
-		resR = append(resR, '-')
-	}
+}
+func findMaxConsecutiveOnes(nums []int) int {
+	obj := new(Obj)
 	count := 0
-	for i := idx; i < len(param); i++ {
-		switch {
-		case param[i] == '-':
-			continue
-		case param[i] < 123 && param[i] > 96:
-			resR = append(resR, param[i]-32)
+	nums = append(nums, 0)
+	for _, num := range nums {
+		if num == 1 {
 			count++
-		default:
-			resR = append(resR, param[i])
-			count++
-		}
-		if count == k {
-			resR = append(resR, '-')
+		} else {
+			obj.compare(count)
 			count = 0
 		}
+	}
+	return obj.maxNum
+}
 
-	}
-	if resR[len(resR)-1] == '-' {
-		resR = resR[:len(resR)-1]
-	}
-	fmt.Println(string(resR))
+//main
+func TestMain(t *testing.T) {
 
 }
-func licenseKeyFormatting(s string, k int) string {
-	s = strings.Replace(s, "-", "", -1)
-	s = strings.ToUpper(s)
-	mod := len(s) % k
 
-	if mod == 0 {
-		mod += k
-	}
-	for mod < len(s) {
-		s = s[:mod] + "-" + s[mod:]
-		mod += k + 1
-	}
-
-	return s
-}
+// tf := "test param" //test function here
+// tf := "ghdfasdf" //test function here
+// bArr := []byte(tf)
+// fmt.Println("value = ", bArr)
+// s := string(bArr)
+// fmt.Println("value = ", s)
+// str := "abcabcabcd"
+// sStr := strings.Split(str, str[:1])
+// fmt.Println(sStr)
