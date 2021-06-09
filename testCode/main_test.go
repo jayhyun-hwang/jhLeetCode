@@ -68,4 +68,20 @@ func TestMain(t *testing.T) {
 		resR = resR[:len(resR)-1]
 	}
 	fmt.Println(string(resR))
+
+}
+func licenseKeyFormatting(s string, k int) string {
+	s = strings.Replace(s, "-", "", -1)
+	s = strings.ToUpper(s)
+	mod := len(s) % k
+
+	if mod == 0 {
+		mod += k
+	}
+	for mod < len(s) {
+		s = s[:mod] + "-" + s[mod:]
+		mod += k + 1
+	}
+
+	return s
 }
