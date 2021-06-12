@@ -4,28 +4,14 @@ import (
 	"testing"
 )
 
-type Obj struct {
-	maxNum int
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-func (obj *Obj) compare(n int) {
-	if n > obj.maxNum {
-		obj.maxNum = n
-	}
-}
-func findMaxConsecutiveOnes(nums []int) int {
-	obj := new(Obj)
-	count := 0
-	nums = append(nums, 0)
-	for _, num := range nums {
-		if num == 1 {
-			count++
-		} else {
-			obj.compare(count)
-			count = 0
-		}
-	}
-	return obj.maxNum
+func findMode(root *TreeNode) []int {
+	return nil
 }
 
 //main

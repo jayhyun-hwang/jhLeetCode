@@ -13,8 +13,15 @@
  *     Right *TreeNode
  * }
  */
-func findMode(root *TreeNode) []int {
-    
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
+
+func findMode(root *TreeNode) []int {
+
+}
+
 // @lc code=end
 
