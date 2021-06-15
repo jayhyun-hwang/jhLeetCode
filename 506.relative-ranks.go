@@ -7,7 +7,7 @@
 // @lc code=start
 func findRelativeRanks(score []int) []string {
 	mp := make(map[int]string)
-	res := make([]string, 0)
+	res := make([]string, 0, len(score))
 	scoreCopy := make([]int, len(score))
 	copy(scoreCopy, score)
 	sort.Slice(scoreCopy, func(i, j int) bool {
