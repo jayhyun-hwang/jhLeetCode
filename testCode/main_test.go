@@ -8,6 +8,7 @@ import (
 )
 
 func findRelativeRanks(score []int) []string {
+	//map for matching scores and ranks
 	mp := make(map[int]string)
 	res := make([]string, len(score))
 	scoreCopy := make([]int, len(score))
