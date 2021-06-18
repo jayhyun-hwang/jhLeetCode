@@ -1,4 +1,4 @@
-package main_test
+package testCode
 
 import (
 	"fmt"
@@ -82,6 +82,9 @@ func TestMain(t *testing.T) {
 	//res = findRelativeRanks22(intArr)
 	res = findRelativeRanks(intArr)
 	fmt.Printf("res: %v\n", res)
+
+	res2 := reverseInt(1123366448877777777)
+	fmt.Printf("res2: %v\n", res2)
 }
 
 // tf := "test param" //test function here
