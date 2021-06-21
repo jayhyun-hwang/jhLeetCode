@@ -83,7 +83,7 @@ func TestMain(t *testing.T) {
 	res = findRelativeRanks(intArr)
 	fmt.Printf("res: %v\n", res)
 
-	res2 := reverseInt(1123366448877777777)
+	res2 := reverseInt(2345)
 	fmt.Printf("res2: %v\n", res2)
 }
 
