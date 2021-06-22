@@ -7,6 +7,17 @@ import (
 	"testing"
 )
 
+//main
+func TestMain(t *testing.T) {
+	intArr := []int{1, 11, 4, 32, 1, 5, 6, 53, 11, 86}
+	var res []string
+	//res = findRelativeRanks22(intArr)
+	res = findRelativeRanks(intArr)
+	fmt.Printf("res: %v\n", res)
+
+	res2 := reverseInt(2345)
+	fmt.Printf("res2: %v\n", res2)
+}
 func findRelativeRanks(score []int) []string {
 	//map for matching scores and ranks
 	mp := make(map[int]string)
@@ -73,18 +84,6 @@ func findRelativeRanks22(score []int) []string {
 	})
 	fmt.Printf("score: %v\n", score)
 	return []string{"finish", "ed"}
-}
-
-//main
-func TestMain(t *testing.T) {
-	intArr := []int{1, 11, 4, 32, 1, 5, 6, 53, 11, 86}
-	var res []string
-	//res = findRelativeRanks22(intArr)
-	res = findRelativeRanks(intArr)
-	fmt.Printf("res: %v\n", res)
-
-	res2 := reverseInt(2345)
-	fmt.Printf("res2: %v\n", res2)
 }
 
 // tf := "test param" //test function here
