@@ -12,12 +12,10 @@ func TestMain(t *testing.T) {
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 	res := 0.0
 	numsSum := append(nums1, nums2...)
-	sort.Slice(numsSum, func(i, j int) bool {
-		return numsSum[i] < numsSum[j]
-	})
+	sort.Ints(numsSum)
 	nlen := len(numsSum)
 	median := int(nlen / 2)
-	if nlen%2 == 1 {
+	if nlen%2 != 0 {
 		res = float64(numsSum[median])
 	} else {
 		res = float64(numsSum[median-1]+numsSum[median]) / 2
