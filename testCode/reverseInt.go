@@ -2,7 +2,7 @@ package testCode
 
 import "math"
 
-type Obj struct {
+type reInt struct {
 	num      int
 	res      int
 	stack    []int
@@ -10,13 +10,13 @@ type Obj struct {
 }
 
 func reverseInt(num int) int {
-	obj := new(Obj)
+	obj := new(reInt)
 	obj.num = num
 	obj.findReverse()
 	obj.makeRes()
 	return obj.res
 }
-func (obj *Obj) findReverse() {
+func (obj *reInt) findReverse() {
 	if obj.num < 1 {
 		return
 	}
@@ -24,7 +24,7 @@ func (obj *Obj) findReverse() {
 	obj.num /= 10
 	obj.findReverse()
 }
-func (obj *Obj) makeRes() {
+func (obj *reInt) makeRes() {
 	if len(obj.stack) <= obj.stackIdx {
 		return
 	}
