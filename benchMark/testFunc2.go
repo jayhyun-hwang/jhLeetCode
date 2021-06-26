@@ -1,25 +1,30 @@
 package benchMark
 
+import (
+	"strings"
+)
+
 func testFunc2() {
+	// fmt.Println(testFunc22(Case1))
+	// fmt.Println(testFunc22(Case2))
+	// fmt.Println(testFunc22(Case3))
+	// fmt.Println(testFunc22(Case4))
 	testFunc22(Case1)
 	testFunc22(Case2)
+	testFunc22(Case3)
+	testFunc22(Case4)
 }
 
 //fix here
-func testFunc22(arr []int) {
-	isOneUser := true
-	totalWorkTime := 0
-	mp := make(map[int]bool)
-	for idx, val := range arr {
-		if isOneUser {
-			totalWorkTime += val
-			if !mp[arr[idx]] {
-				mp[arr[idx]] = true
-				if len(mp) > 1 {
-					isOneUser = false
-					totalWorkTime = 0
-				}
-			}
-		}
+func testFunc22(word string) bool {
+	if len(word) == 1 {
+		return true
 	}
+	if word[1:] == strings.ToLower(word[1:]) {
+		return true
+	}
+	if word == strings.ToUpper(word) {
+		return true
+	}
+	return false
 }
