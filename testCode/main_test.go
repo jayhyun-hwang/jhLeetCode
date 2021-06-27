@@ -9,54 +9,28 @@ func TestMain(t *testing.T) {
 
 }
 
-// A65
-// Z90
-// a97
-// z122
-type Obj struct {
-	word        string
-	idx         int
-	shouldUpper bool
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-func detectCapitalUse(word string) bool {
-	if len(word) == 1 {
-		return true
+var Min = 10000000
+
+func getMinimumDifference(root *TreeNode) int {
+	if root.Right != nil {
+		if root.Right.Val-root.Val < Min {
+			Min = root.Right.Val - root.Val
+		}
+		getMinimumDifference(root.Right)
 	}
-	var firstIsUp bool
-	if word[0] < 91 {
-		firstIsUp = true
-	} else {
-		firstIsUp = false
+	if root.Left != nil {
+		if root.Val-root.Left.Val < Min {
+			Min = root.Val - root.Left.Val
+		}
+		getMinimumDifference(root.Left)
 	}
-	obj := new(Obj)
-	obj.word = word
-	if word[1] < 91 {
-		obj.shouldUpper = true
-	} else {
-		obj.shouldUpper = false
-	}
-	if !firstIsUp && obj.shouldUpper {
-		return false
-	}
-	var piv byte
-	if obj.shouldUpper {
-		piv = 64
-	} else {
-		piv = 96
-	}
-	obj.idx = 2
-	return obj.findSol(piv)
-}
-func (obj *Obj) findSol(piv byte) bool {
-	if obj.idx >= len(obj.word) {
-		return true
-	}
-	if obj.word[obj.idx] > piv && obj.word[obj.idx] < piv+27 {
-		obj.idx++
-		return obj.findSol(piv)
-	}
-	return false
+	return Min
 }
 
 // func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
