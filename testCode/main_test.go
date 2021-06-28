@@ -1,36 +1,47 @@
 package testCode
 
 import (
+	"fmt"
 	"testing"
 )
 
 //main
 func TestMain(t *testing.T) {
-
+	fmt.Println(reverseStr("abcdefg", 2))
 }
-
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
-}
-
-var Min = 10000000
-
-func getMinimumDifference(root *TreeNode) int {
-	if root.Right != nil {
-		if root.Right.Val-root.Val < Min {
-			Min = root.Right.Val - root.Val
+func reverseStr(s string, k int) string {
+	// s = s[:k]
+	// fmt.Println(s)
+	asc := false
+	var res string
+	findStr := func() {}
+	findStr = func() {
+		if len(s) <= k {
+			if asc {
+				res += s
+			} else {
+				runeArr := []rune(s)
+				for i, j := 0, len(runeArr)-1; i < j; i, j = i+1, j-1 {
+					runeArr[i], runeArr[j] = runeArr[j], runeArr[i]
+				}
+				res += string(runeArr)
+			}
+			return
 		}
-		getMinimumDifference(root.Right)
-	}
-	if root.Left != nil {
-		if root.Val-root.Left.Val < Min {
-			Min = root.Val - root.Left.Val
+		temp := s[:k]
+		if asc {
+			res += temp
+		} else {
+			runeArr := []rune(s)
+			for i, j := 0, len(runeArr)-1; i < j; i, j = i+1, j-1 {
+				runeArr[i], runeArr[j] = runeArr[j], runeArr[i]
+			}
+			res += string(runeArr)
 		}
-		getMinimumDifference(root.Left)
+		s = s[k:]
+		findStr()
 	}
-	return Min
+	return res
 }
 
 // func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
