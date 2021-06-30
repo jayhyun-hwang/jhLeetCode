@@ -7,34 +7,59 @@
 // @lc code=start
 func reverseStr(s string, k int) string {
 	asc := false
-	var res string
+	var res []rune
+	temp := make([]rune, k)
 	findStr := func() {}
 	findStr = func() {
 		if len(s) <= k {
 			if asc {
-				res += s
+				res = append(res, []rune(s)...)
 			} else {
-				for i, j := 0, len([]rune(s))-1; i < j; i, j = i+1, j-1 {
-					[]rune(s)[i], []rune(s)[j] = []rune(s)[j], []rune(s)[i]
+				temp = []rune(s)
+				for i, j := 0, len(temp)-1; i < j; i, j = i+1, j-1 {
+					temp[i], temp[j] = temp[j], temp[i]
 				}
-				res += s
+				res = append(res, temp...)
 			}
 			return
 		}
-		temp := s[:k]
+		temp = []rune(s[:k])
 		if asc {
-			res += temp
+			res = append(res, temp...)
 		} else {
-			for i, j := 0, len([]rune(temp))-1; i < j; i, j = i+1, j-1 {
-				[]rune(temp)[i], []rune(temp)[j] = []rune(temp)[j], []rune(temp)[i]
+			for i, j := 0, len(temp)-1; i < j; i, j = i+1, j-1 {
+				temp[i], temp[j] = temp[j], temp[i]
 			}
-			res += temp
+			res = append(res, temp...)
 		}
 		s = s[k:]
+		asc = !asc
 		findStr()
 	}
-	return res
+	findStr()
+	return string(res)
 }
+
+// func reverseStr(s string, k int) string {
+// 	res := []byte(s)
+// 	for i := 0; i < len(res); i = i + 2*k {
+// 		if i+k < len(res) {
+// 			reverseK(res[i : i+k])
+// 		} else {
+// 			reverseK(res[i:])
+// 		}
+// 	}
+// 	return string(res)
+// }
+
+// // reverse slice
+// func reverseK(b []byte) {
+// 	left, right := 0, len(b)-1
+// 	for left < right {
+// 		b[left], b[right] = b[right], b[left]
+// 		left, right = left+1, right-1
+// 	}
+// }
 
 // @lc code=end
 

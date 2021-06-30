@@ -10,38 +10,38 @@ func TestMain(t *testing.T) {
 	fmt.Println(reverseStr("abcdefg", 2))
 }
 func reverseStr(s string, k int) string {
-	// s = s[:k]
-	// fmt.Println(s)
 	asc := false
-	var res string
+	var res []rune
+	temp := make([]rune, k)
 	findStr := func() {}
 	findStr = func() {
 		if len(s) <= k {
 			if asc {
-				res += s
+				res = append(res, []rune(s)...)
 			} else {
-				runeArr := []rune(s)
-				for i, j := 0, len(runeArr)-1; i < j; i, j = i+1, j-1 {
-					runeArr[i], runeArr[j] = runeArr[j], runeArr[i]
+				temp = []rune(s)
+				for i, j := 0, len(temp)-1; i < j; i, j = i+1, j-1 {
+					temp[i], temp[j] = temp[j], temp[i]
 				}
-				res += string(runeArr)
+				res = append(res, temp...)
 			}
 			return
 		}
-		temp := s[:k]
+		temp = []rune(s[:k])
 		if asc {
-			res += temp
+			res = append(res, temp...)
 		} else {
-			runeArr := []rune(s)
-			for i, j := 0, len(runeArr)-1; i < j; i, j = i+1, j-1 {
-				runeArr[i], runeArr[j] = runeArr[j], runeArr[i]
+			for i, j := 0, len(temp)-1; i < j; i, j = i+1, j-1 {
+				temp[i], temp[j] = temp[j], temp[i]
 			}
-			res += string(runeArr)
+			res = append(res, temp...)
 		}
 		s = s[k:]
+		asc = !asc
 		findStr()
 	}
-	return res
+	findStr()
+	return string(res)
 }
 
 // func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
