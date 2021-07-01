@@ -6,8 +6,10 @@
 
 // @lc code=start
 func reverseStr(s string, k int) string {
+	//is reverse temp slice toggle
 	asc := false
 	var res []rune
+	//temporary rune slice for reverse string and append
 	temp := make([]rune, k)
 	findStr := func() {}
 	findStr = func() {

@@ -7,7 +7,7 @@ import (
 
 //main
 func TestMain(t *testing.T) {
-	fmt.Println(reverseStr("abcdefg", 2))
+	fmt.Println(reverseStr("abcdefgslkvnoasnlkkj", 4))
 }
 func reverseStr(s string, k int) string {
 	asc := false
@@ -15,7 +15,7 @@ func reverseStr(s string, k int) string {
 	temp := make([]rune, k)
 	findStr := func() {}
 	findStr = func() {
-		if len(s) <= k {
+		if len(s) < k {
 			if asc {
 				res = append(res, []rune(s)...)
 			} else {
