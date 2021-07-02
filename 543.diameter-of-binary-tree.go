@@ -14,7 +14,7 @@
  * }
  */
 func diameterOfBinaryTree(root *TreeNode) int {
-    
 }
+
 // @lc code=end
 

@@ -1,47 +1,30 @@
 package testCode
 
 import (
-	"fmt"
 	"testing"
 )
 
 //main
 func TestMain(t *testing.T) {
-	fmt.Println(reverseStr("abcdefgslkvnoasnlkkj", 4))
 }
-func reverseStr(s string, k int) string {
-	asc := false
-	var res []rune
-	temp := make([]rune, k)
-	findStr := func() {}
-	findStr = func() {
-		if len(s) < k {
-			if asc {
-				res = append(res, []rune(s)...)
-			} else {
-				temp = []rune(s)
-				for i, j := 0, len(temp)-1; i < j; i, j = i+1, j-1 {
-					temp[i], temp[j] = temp[j], temp[i]
-				}
-				res = append(res, temp...)
-			}
-			return
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+func diameterOfBinaryTree(root *TreeNode) int {
+	leftDepth := 0
+	findDepth := func(node *TreeNode) {}
+	findDepth = func(node *TreeNode) {
+		if root.Left != nil {
+			leftDepth++
 		}
-		temp = []rune(s[:k])
-		if asc {
-			res = append(res, temp...)
-		} else {
-			for i, j := 0, len(temp)-1; i < j; i, j = i+1, j-1 {
-				temp[i], temp[j] = temp[j], temp[i]
-			}
-			res = append(res, temp...)
-		}
-		s = s[k:]
-		asc = !asc
-		findStr()
+
 	}
-	findStr()
-	return string(res)
+	findDepth(root)
+
 }
 
 // func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
