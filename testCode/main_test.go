@@ -1,11 +1,35 @@
 package testCode
 
 import (
+	"fmt"
 	"testing"
 )
 
 //main
 func TestMain(t *testing.T) {
+	fmt.Printf("checkRecord(\"LAPPPLLPL\"): %v\n", checkRecord("LAPPPLLPL"))
+}
+func checkRecord(s string) bool {
+	absentCount := 0
+	consecutiveLate := 0
+	for _, val := range s {
+		switch val {
+		case 'L':
+			consecutiveLate++
+			if consecutiveLate > 2 {
+				return false
+			}
+		case 'A':
+			absentCount++
+			if absentCount > 1 {
+				return false
+			}
+			fallthrough
+		default:
+			consecutiveLate = 0
+		}
+	}
+	return true
 }
 
 type TreeNode struct {
@@ -24,7 +48,7 @@ func diameterOfBinaryTree(root *TreeNode) int {
 
 	}
 	findDepth(root)
-
+	return 0
 }
 
 // func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
