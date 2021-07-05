@@ -56,4 +56,3 @@ func maxOf2(a, b int) int {
 }
 
 // @lc code=end
-
