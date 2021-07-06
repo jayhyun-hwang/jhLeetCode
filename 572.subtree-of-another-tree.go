@@ -14,7 +14,10 @@
  * }
  */
 func isSubtree(root *TreeNode, subRoot *TreeNode) bool {
-    
+	findSub := func() {}
+	findSub = func() {
+	}
 }
+
 // @lc code=end
 

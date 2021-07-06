@@ -1,35 +1,22 @@
 package testCode
 
 import (
-	"fmt"
 	"testing"
 )
 
 //main
 func TestMain(t *testing.T) {
-	fmt.Printf("checkRecord(\"LAPPPLLPL\"): %v\n", checkRecord("LAPPPLLPL"))
 }
-func checkRecord(s string) bool {
-	absentCount := 0
-	consecutiveLate := 0
-	for _, val := range s {
-		switch val {
-		case 'L':
-			consecutiveLate++
-			if consecutiveLate > 2 {
-				return false
-			}
-		case 'A':
-			absentCount++
-			if absentCount > 1 {
-				return false
-			}
-			fallthrough
-		default:
-			consecutiveLate = 0
+func isSubtree(root *TreeNode, subRoot *TreeNode) bool {
+	res := false
+	findSub := func() {}
+	findSub = func() {
+		if root.Val == subRoot.Val {
+
 		}
 	}
-	return true
+	findSub()
+	return res
 }
 
 type TreeNode struct {
