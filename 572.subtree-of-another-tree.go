@@ -15,7 +15,15 @@
  */
 func isSubtree(root *TreeNode, subRoot *TreeNode) bool {
 	findSub := func() {}
-	findSub = func() {
+	findSub = func(r *TreeNode, s *TreeNode) bool {
+		if s == nil {
+			
+		}
+		if r.Val == s.Val {
+			r.
+		}else {
+		}
+		return true
 	}
 }
 
