@@ -8,15 +8,27 @@ import (
 func TestMain(t *testing.T) {
 }
 func isSubtree(root *TreeNode, subRoot *TreeNode) bool {
-	res := false
-	findSub := func() {}
-	findSub = func() {
-		if root.Val == subRoot.Val {
+	// findSub := func(r *TreeNode, s *TreeNode) {}
+	// findSub = func(r *TreeNode, s *TreeNode) {
 
+	// 	res = true
+	// }
+	// findSub(root, subRoot)
+	if isSame(root, subRoot) {
+		if subRoot.Left != nil {
+			isSame(root.Left, subRoot.Left)
+		}
+		if subRoot.Right != nil {
+			isSame(root.Right, subRoot.Right)
 		}
 	}
-	findSub()
-	return res
+
+}
+func isSame(r *TreeNode, s *TreeNode) bool {
+	if r.Val == s.Val {
+		return true
+	}
+	return false
 }
 
 type TreeNode struct {
