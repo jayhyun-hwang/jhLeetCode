@@ -1,11 +1,22 @@
 package testCode
 
 import (
+	"sort"
 	"testing"
 )
 
 //main
 func TestMain(t *testing.T) {
+}
+
+func findMaxAverage(nums []int, k int) float64 {
+	sort.Slice(nums, func(i, j int) bool {
+		return nums[i] > nums[j]
+	})
+	if len(nums) > k {
+		nums = nums[:k]
+	}
+
 }
 func isSubtree(root *TreeNode, subRoot *TreeNode) bool {
 	// findSub := func(r *TreeNode, s *TreeNode) {}
