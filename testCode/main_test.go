@@ -9,7 +9,27 @@ import (
 func TestMain(t *testing.T) {
 	findMaxAverage([]int{1, 12, -5, -6, 50, 3}, 4)
 }
-
+func judgeCircle(moves string) bool {
+	rl := 0
+	ud := 0
+	for _, val := range moves {
+		switch val {
+		case 'L':
+			rl--
+		case 'R':
+			rl++
+		case 'U':
+			ud++
+		case 'D':
+			ud--
+		}
+	}
+	res := false
+	if rl == 0 && ud == 0 {
+		res = true
+	}
+	return res
+}
 func findMaxAverage(nums []int, k int) float64 {
 	idx := 0
 	arrl := len(nums)
