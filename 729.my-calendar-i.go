@@ -62,7 +62,8 @@
 
 // @lc code=start
 type MyCalendar struct {
-	calMap map[int]bool
+	calMap  map[int]bool
+	tempMap map[int]bool
 }
 
 func Constructor() MyCalendar {
@@ -72,14 +73,16 @@ func Constructor() MyCalendar {
 }
 
 func (this *MyCalendar) Book(start int, end int) bool {
+	this.tempMap = this.calMap
 	for i := start + 1; i < end; i++ {
-		if this.calMap[i] {
+		if this.tempMap[i] {
 			return false
 		}
-		this.calMap[i] = true
+		this.tempMap[i] = true
 	}
-	this.calMap[start] = true
-	this.calMap[end] = true
+	this.tempMap[start] = true
+	this.tempMap[end] = true
+	this.calMap = this.tempMap
 	return true
 }
 
