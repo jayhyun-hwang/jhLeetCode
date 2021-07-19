@@ -61,72 +61,73 @@
  */
 
 // @lc code=start
-type MyCalendar struct {
-	calMap  map[int]bool
-	tempMap map[int]bool
-}
-
-func Constructor() MyCalendar {
-	obj := new(MyCalendar)
-	obj.calMap = make(map[int]bool, 0)
-	return *obj
-}
-
-func (this *MyCalendar) Book(start int, end int) bool {
-	this.tempMap = this.calMap
-	for i := start + 1; i < end; i++ {
-		if this.tempMap[i] {
-			return false
-		}
-		this.tempMap[i] = true
-	}
-	this.tempMap[start] = true
-	this.tempMap[end] = true
-	this.calMap = this.tempMap
-	return true
-}
-
 // type MyCalendar struct {
-// 	root *treeNode
-// }
-
-// type treeNode struct {
-// 	start, end  int
-// 	left, right *treeNode
+// 	calMap  map[int]bool
+// 	tempMap map[int]bool
 // }
 
 // func Constructor() MyCalendar {
-// 	return MyCalendar{
-// 		root: nil,
-// 	}
+// 	obj := new(MyCalendar)
+// 	obj.calMap = make(map[int]bool, 0)
+// 	return *obj
 // }
 
 // func (this *MyCalendar) Book(start int, end int) bool {
-// 	if end < start || start < 0 {
-// 		return false
-// 	}
-
-//     return insert(&this.root, start, end)
-// }
-
-// func insert(root **treeNode, start, end int) bool {
-// 	if *root == nil {
-// 		*root = &treeNode{
-// 			start: start,
-// 			end:   end,
-// 			left:  nil,
-// 			right: nil,
+// 	this.tempMap = this.calMap
+// 	for i := start + 1; i < end; i++ {
+// 		if this.tempMap[i] {
+// 			return false
 // 		}
-// 		return true
+// 		this.tempMap[i] = true
 // 	}
-
-// 	if (*root).start >= end {
-// 		return insert(&(*root).left, start, end)
-// 	} else if (*root).end <= start {
-// 		return insert(&(*root).right, start, end)
-// 	}
-// 	return false
+// 	this.tempMap[start] = true
+// 	this.tempMap[end] = true
+// 	this.calMap = this.tempMap
+// 	return true
 // }
+
+type MyCalendar struct {
+	root *treeNode
+}
+
+type treeNode struct {
+	start, end  int
+	left, right *treeNode
+}
+
+func Constructor() MyCalendar {
+	return MyCalendar{
+		root: nil,
+	}
+}
+
+func (this *MyCalendar) Book(start int, end int) bool {
+	if end < start || start < 0 {
+		return false
+	}
+
+	return insert(&this.root, start, end)
+}
+
+func insert(root **treeNode, start, end int) bool {
+	if *root == nil {
+		*root = &treeNode{
+			start: start,
+			end:   end,
+			left:  nil,
+			right: nil,
+		}
+		return true
+	}
+
+	if (*root).start >= end {
+		return insert(&(*root).left, start, end)
+	} else if (*root).end <= start {
+		return insert(&(*root).right, start, end)
+	}
+	return false
+}
+
 /**
  * Your MyCalendar object will be instantiated and called as such:
  * obj := Constructor();
