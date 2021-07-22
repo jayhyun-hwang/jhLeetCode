@@ -1,20 +1,35 @@
 package benchMark
 
+import "strings"
+
 var Case1 = "SVWEASVAVASDFVXZC"
 var Case2 = "Avrvavavavbeadvsdv"
 var Case3 = "fdbadrgabeatasvasbfa"
 var Case4 = "avasdvASDfvasdASDVaewgsavaSDVasdv"
 
 func testFunc1() {
-	// fmt.Println(testFunc11(Case1))
-	// fmt.Println(testFunc11(Case2))
-	// fmt.Println(testFunc11(Case3))
-	// fmt.Println(testFunc11(Case4))
 	testFunc11(Case1)
 	testFunc11(Case2)
 	testFunc11(Case3)
 	testFunc11(Case4)
+	// fmt.Println(testFunc11(Case1))
+	// fmt.Println(testFunc11(Case2))
+	// fmt.Println(testFunc11(Case3))
+	// fmt.Println(testFunc11(Case4))
 }
+func testFunc2() {
+	testFunc22(Case1)
+	testFunc22(Case2)
+	testFunc22(Case3)
+	testFunc22(Case4)
+	// fmt.Println(testFunc22(Case1))
+	// fmt.Println(testFunc22(Case2))
+	// fmt.Println(testFunc22(Case3))
+	// fmt.Println(testFunc22(Case4))
+}
+
+//fix here
+//1st function to compare
 func testFunc11(word string) bool {
 	if len(word) == 1 {
 		return true
@@ -58,6 +73,21 @@ func (obj *Obj) findSol(piv byte) bool {
 	if obj.word[obj.idx] > piv && obj.word[obj.idx] < piv+27 {
 		obj.idx++
 		return obj.findSol(piv)
+	}
+	return false
+}
+
+//fix here
+//2nd function to compare
+func testFunc22(word string) bool {
+	if len(word) == 1 {
+		return true
+	}
+	if word[1:] == strings.ToLower(word[1:]) {
+		return true
+	}
+	if word == strings.ToUpper(word) {
+		return true
 	}
 	return false
 }
