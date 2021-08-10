@@ -1,27 +1,12 @@
 package testCode
 
 import (
-	"fmt"
 	"testing"
 )
 
 //main
 func TestMain(t *testing.T) {
-	obj := Constructor()
-	param := obj.Book(48, 50)
-	fmt.Printf("param: %v\n", param)
-	param = obj.Book(0, 6)
-	fmt.Printf("param2: %v\n", param)
-	param = obj.Book(6, 13)
-	fmt.Printf("param3: %v\n", param)
-	param = obj.Book(8, 13)
-	fmt.Printf("param4: %v\n", param)
-	param = obj.Book(15, 23)
-	fmt.Printf("param5: %v\n", param)
-	param = obj.Book(49, 50)
-	fmt.Printf("param6: %v\n", param)
-	param = obj.Book(45, 50)
-	fmt.Printf("param6: %v\n", param)
+	countOfAtoms("kkk")
 }
 
 //[null,true,false,true,true,false,false,false,true,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false]
@@ -55,44 +40,18 @@ func TestMain(t *testing.T) {
 // 	}
 // 	return true
 // }
-type MyCalendar struct {
-	root *treeNode
-}
+func countOfAtoms(formula string) string {
+	//map
+	//bracket
+	//recursive function
 
-type treeNode struct {
-	start, end  int
-	left, right *treeNode
-}
+	idx := 0
 
-func Constructor() MyCalendar {
-	return MyCalendar{
-		root: nil,
+	dynaFunc := func() {}
+	dynaFunc = func() {
+
 	}
-}
+	dynaFunc()
 
-func (this *MyCalendar) Book(start int, end int) bool {
-	if end < start || start < 0 {
-		return false
-	}
-
-	return insert(&this.root, start, end)
-}
-
-func insert(root **treeNode, start, end int) bool {
-	if *root == nil {
-		*root = &treeNode{
-			start: start,
-			end:   end,
-			left:  nil,
-			right: nil,
-		}
-		return true
-	}
-
-	if (*root).start >= end {
-		return insert(&(*root).left, start, end)
-	} else if (*root).end <= start {
-		return insert(&(*root).right, start, end)
-	}
-	return false
+	return ""
 }
