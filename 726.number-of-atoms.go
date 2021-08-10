@@ -9,6 +9,15 @@ func countOfAtoms(formula string) string {
 	//map
 	//bracket
 	//recursive function
+
+	idx := 0
+
+	dynaFunc := func() {}
+
+	dynaFunc = func() {
+		char := formula[idx]
+	}
+
 }
 
 // func countOfAtoms(formula string) string {
