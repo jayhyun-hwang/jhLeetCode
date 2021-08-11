@@ -1,12 +1,13 @@
 package testCode
 
 import (
+	"fmt"
 	"testing"
 )
 
 //main
 func TestMain(t *testing.T) {
-	countOfAtoms("kkk")
+	fmt.Println(countOfAtoms("K4(ON(SO3)2)2"))
 }
 
 func countOfAtoms(formula string) string {
