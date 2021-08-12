@@ -17,13 +17,20 @@ func countOfAtoms(formula string) string {
 
 	idx := 0
 	res := ""
+	ing := false
 
 	findSol := func() {}
 	findSol = func() {
 		if idx >= len(formula) {
 			return
 		}
-		if formula[idx] == '(' {
+		c := formula[idx]
+		switch {
+		case c >= 'A' && c <= 'Z':
+			ing = true
+		case c >= 'a' && c <= 'z':
+
+		case c == '(':
 
 		}
 		idx++
