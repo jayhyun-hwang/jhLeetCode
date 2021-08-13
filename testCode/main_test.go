@@ -18,6 +18,8 @@ func countOfAtoms(formula string) string {
 	idx := 0
 	res := ""
 	ing := false
+	dep := 0
+	resMap := make(map[int]map[string]int)
 
 	findSol := func() {}
 	findSol = func() {
