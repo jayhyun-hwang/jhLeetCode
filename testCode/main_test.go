@@ -2,6 +2,7 @@ package testCode
 
 import (
 	"fmt"
+	"strconv"
 	"testing"
 )
 
@@ -18,10 +19,25 @@ func countOfAtoms(formula string) string {
 	idx := 0
 	res := ""
 	ing := false
-	dep := 0
+	depth := 0
 	temp := ""
-	resMap := make(map[int]map[string]int)
+	//when depth is 0, add res
+	tempMap := make(map[int]map[string]int)
+	num := ""
+	resMap := make(map[string]int)
 
+	insertTemp := func() {
+		if depth == 0 {
+			if len(num) > 0 {
+				resMap[temp], _ = strconv.Atoi(num)
+			} else {
+				resMap[temp] = 1
+			}
+		} else {
+			tempMap[depth][temp], _ = strconv.Atoi(num)
+		}
+
+	}
 	findSol := func() {}
 	findSol = func() {
 		if idx >= len(formula) {
@@ -29,17 +45,24 @@ func countOfAtoms(formula string) string {
 		}
 		c := formula[idx]
 		switch {
-		case c >= 'A' && c <= 'Z':
-			//single Upper
-			if ing == true {
-
+		case c >= 'A' && c <= 'Z': //Uppercase
+			if len(temp) > 0 { //close temp, start
+				insertTemp()
+				// insertTemp(temp, num, depth)
+				temp = string(c)
+			} else { //start new atom with upper character
+				temp = string(c)
 			}
+		case c >= 'a' && c <= 'z': //downcase
+			temp += string(c)
+		case c == '(': //bracket open
+			// insertTemp(temp, num, depth)
+			insertTemp()
+			depth++
+		case c == ')': //bracket close
 
-			ing = true
-		case c >= 'a' && c <= 'z':
-
-		case c == '(':
-
+		case c >= '0' && c <= '9': //number
+			num += string(c)
 		}
 		idx++
 		findSol()
