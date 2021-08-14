@@ -19,6 +19,7 @@ func countOfAtoms(formula string) string {
 	res := ""
 	ing := false
 	dep := 0
+	temp := ""
 	resMap := make(map[int]map[string]int)
 
 	findSol := func() {}
@@ -29,6 +30,11 @@ func countOfAtoms(formula string) string {
 		c := formula[idx]
 		switch {
 		case c >= 'A' && c <= 'Z':
+			//single Upper
+			if ing == true {
+
+			}
+
 			ing = true
 		case c >= 'a' && c <= 'z':
 
