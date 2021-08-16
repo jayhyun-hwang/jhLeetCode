@@ -53,6 +53,8 @@ func countOfAtoms(formula string) string {
 			} else { //start new atom with upper character
 				temp = string(c)
 			}
+			//in bracket
+
 		case c >= 'a' && c <= 'z': //downcase
 			temp += string(c)
 		case c == '(': //bracket open
