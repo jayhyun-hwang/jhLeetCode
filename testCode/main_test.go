@@ -18,7 +18,6 @@ func countOfAtoms(formula string) string {
 
 	idx := 0
 	res := ""
-	ing := false
 	depth := 0
 	temp := ""
 	//when depth is 0, add res
@@ -29,14 +28,15 @@ func countOfAtoms(formula string) string {
 	insertTemp := func() {
 		if depth == 0 {
 			if len(num) > 0 {
-				resMap[temp], _ = strconv.Atoi(num)
+				atomCount, _ := strconv.Atoi(num)
+				resMap[temp] += atomCount
 			} else {
-				resMap[temp] = 1
+				resMap[temp] += 1
 			}
 		} else {
 			tempMap[depth][temp], _ = strconv.Atoi(num)
 		}
-
+		temp = ""
 	}
 	findSol := func() {}
 	findSol = func() {
@@ -64,7 +64,11 @@ func countOfAtoms(formula string) string {
 		case c == ')': //bracket close
 
 		case c >= '0' && c <= '9': //number
-			num += string(c)
+			if len(temp) > 0 {
+				num += string(c)
+			} else {
+
+			}
 		}
 		idx++
 		findSol()
