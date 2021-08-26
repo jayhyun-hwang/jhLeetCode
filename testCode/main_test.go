@@ -8,7 +8,35 @@ import (
 
 //main
 func TestMain(t *testing.T) {
-	fmt.Println(countOfAtoms("K4(ON(SO3)2)2"))
+	//fmt.Println(countOfAtoms("K4(ON(SO3)2)2"))
+	fmt.Println(sol([]int{0, 1, 1, 2, 3, 4, 5, 6, 6}))
+
+}
+
+//[0,0,1,1,2,3,4,5,6,6]
+func sol(arr []int) []int {
+	if len(arr) < 2 {
+		return arr
+	}
+	preVal := arr[0]
+	lastVal := arr[len(arr)-1]
+	idx := 1
+
+	for _, val := range arr {
+		if preVal == val {
+			continue
+		} else {
+			if preVal == lastVal {
+				arr[idx] = 0
+			} else {
+				arr[idx] = val
+			}
+			idx++
+		}
+		preVal = val
+	}
+
+	return arr
 }
 
 func countOfAtoms(formula string) string {
