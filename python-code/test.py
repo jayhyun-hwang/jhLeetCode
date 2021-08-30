@@ -1,3 +1,1 @@
-print('Hello World')
-print('Hello World22')
-print('Hello World33')
+print(findMedianSortedArrays(self, [1,2],[1,2]))
