@@ -24,19 +24,4 @@ def solution(n, arr1, arr2):
 
 print(solution(6, [46, 33, 33 ,22, 31, 50], [27 ,56, 19, 14, 14, 10]))
 
-def valueFill(self, filling: str, length: int) -> str:
-    # 파라미터 길이 체크
-    if len(self) < 1: return
-
-    # + / - 일 때 처리
-    if self[:1] == '-' or self[:1] == '+':
-        return self.valueFill(filling, length-1)
-    
-    for i in range(length):
-        if length > len(self):
-            self = filling + self
-        else:
-            break
-    
-    return self
 
