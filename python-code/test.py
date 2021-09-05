@@ -29,5 +29,9 @@ def valueFill(strParam: str, filling: str, length: int) -> str:
     
     return strParam
 
-print(valueFill("+", "0", 5))
+print(valueFill("+132", "0", 10))
+print(valueFill("+++132", "0", 10))
+print(valueFill("-132", "0", 10))
+print(valueFill("---132", "0", 10))
+print("---132".zfill(10))
 
