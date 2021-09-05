@@ -34,4 +34,5 @@ print(valueFill("+++132", "0", 10))
 print(valueFill("-132", "0", 10))
 print(valueFill("---132", "0", 10))
 print("---132".zfill(10))
+print("---132".rjust(10, "0"))
 
