@@ -7,6 +7,7 @@ def solution(cacheSize: int, cities: List[str]) -> int:
         return 5 * len(cities)
     answer = 0
     cache = []
+    isin = False
     for city in cities:
         isin = False
         city = city.lower()
