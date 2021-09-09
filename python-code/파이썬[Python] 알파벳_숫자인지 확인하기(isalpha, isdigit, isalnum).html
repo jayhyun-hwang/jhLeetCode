@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)https://appia.tistory.com/178 -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/lightbox.min.css"><link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/font.css"><link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/content.css"><!--[if lt IE 9]><script src="https://t1.daumcdn.net/tistory_admin/lib/jquery/jquery-1.12.4.min.js"></script><![endif]--><!--[if gte IE 9]>
+<!--><script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/jquery-3.2.1.min.js.다운로드"></script><!--<![endif]-->
+<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/lightbox-plus-jquery.min.js.다운로드"></script>
+<script>
+lightbox.options.fadeDuration = 200;
+lightbox.options.resizeDuration = 200;
+lightbox.options.wrapAround = false;
+lightbox.options.albumLabel = "%1 / %2";
+</script>
+<script>var tjQuery = jQuery.noConflict(true);</script><style type="text/css">.tt_article_useless_p_margin p {padding-top:0 !important;padding-bottom:0 !important;margin-top:0 !important;margin-bottom:0 !important;}</style><meta name="referrer" content="always"><link rel="icon" href="https://t1.daumcdn.net/tistory_admin/static/top/favicon_0630.ico"><link rel="apple-touch-icon" href="https://img1.daumcdn.net/thumb/C180x180/?fname=https%3A%2F%2Ftistory3.daumcdn.net%2Ftistory%2F2919201%2Fattach%2Fe226702a7ac94e989c9e4fd132b6536a">
+<link rel="apple-touch-icon" sizes="76x76" href="https://img1.daumcdn.net/thumb/C76x76/?fname=https%3A%2F%2Ftistory3.daumcdn.net%2Ftistory%2F2919201%2Fattach%2Fe226702a7ac94e989c9e4fd132b6536a">
+<link rel="apple-touch-icon" sizes="120x120" href="https://img1.daumcdn.net/thumb/C120x120/?fname=https%3A%2F%2Ftistory3.daumcdn.net%2Ftistory%2F2919201%2Fattach%2Fe226702a7ac94e989c9e4fd132b6536a">
+<link rel="apple-touch-icon" sizes="152x152" href="https://img1.daumcdn.net/thumb/C152x152/?fname=https%3A%2F%2Ftistory3.daumcdn.net%2Ftistory%2F2919201%2Fattach%2Fe226702a7ac94e989c9e4fd132b6536a">
+<meta name="google-adsense-platform-account" content="ca-host-pub-9691043933427338">
+<meta name="google-adsense-platform-domain" content="tistory.com">
+<meta name="description" content="최근에 문자열에서 알파벳의 빈도를 확인하는 방법에 대해서 간단하게 포스팅을 했었던 적이 있습니다. 이번에는 그와 유사하게 문자열이 알파벳인지 확인하는 방법, 또는 숫자인지 확인하는 방법, 그리고 알파벳..">
+
+<!-- BEGIN OPENGRAPH -->
+<link rel="canonical" href="https://appia.tistory.com/178"><meta property="og:type" content="article"><meta property="og:url" content="https://appia.tistory.com/178"><meta property="og:article:author" content="끔손"><meta property="og:site_name" content="앱피아"><meta property="og:title" content="파이썬[Python] 알파벳/숫자인지 확인하기(isalpha, isdigit, isalnum)"><meta name="by" content="SmartLeader 끔손"><meta property="og:description" content="최근에 문자열에서 알파벳의 빈도를 확인하는 방법에 대해서 간단하게 포스팅을 했었던 적이 있습니다. 이번에는 그와 유사하게 문자열이 알파벳인지 확인하는 방법, 또는 숫자인지 확인하는 방법, 그리고 알파벳.."><meta property="og:image" content="https://t1.daumcdn.net/tistory_admin/static/images/openGraph/opengraph.png"><meta property="article:section" content="IT 인터넷">
+<!-- END OPENGRAPH -->
+
+
+
+<!-- BEGIN TWITTERCARD -->
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@TISTORY"><meta name="twitter:title" content="파이썬[Python] 알파벳/숫자인지 확인하기(isalpha, isdigit, isalnum)"><meta name="twitter:description" content="최근에 문자열에서 알파벳의 빈도를 확인하는 방법에 대해서 간단하게 포스팅을 했었던 적이 있습니다. 이번에는 그와 유사하게 문자열이 알파벳인지 확인하는 방법, 또는 숫자인지 확인하는 방법, 그리고 알파벳.."><meta property="twitter:image" content="https://t1.daumcdn.net/tistory_admin/static/images/openGraph/opengraph.png">
+<!-- END TWITTERCARD -->
+
+
+
+<!-- BEGIN DAUMAPP -->
+<meta property="dg:plink" content="https://appia.tistory.com/178"><meta name="plink" content="https://appia.tistory.com/178"><meta name="title" content="파이썬[Python] 알파벳/숫자인지 확인하기(isalpha, isdigit, isalnum)"><meta name="article:media_name" content="앱피아"><meta property="article:mobile_url" content="https://appia.tistory.com/m/178"><meta property="article:pc_url" content="https://appia.tistory.com/178"><meta property="article:mobile_view_url" content="https://appia.tistory.com/m/178"><meta property="article:pc_view_url" content="https://appia.tistory.com/178"><meta property="article:talk_channel_view_url" content="https://appia.tistory.com/m/178"><meta property="article:pc_service_home" content="https://www.tistory.com"><meta property="article:mobile_service_home" content="https://www.tistory.com/m"><meta property="article:txid" content="2919201_178"><meta property="article:published_time" content="2020-03-14T06:58:01+09:00"><meta property="og:regDate" content="20200312045808"><meta property="article:modified_time" content="2020-03-14T06:58:02+09:00">
+<!-- END DAUMAPP -->
+
+
+
+<!-- BEGIN STRUCTURED_DATA -->
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"BlogPosting","mainEntityOfPage":{"@id":"https:\/\/appia.tistory.com\/178"},"url":"https:\/\/appia.tistory.com\/178","headline":"\ud30c\uc774\uc36c[Python] \uc54c\ud30c\ubcb3\/\uc22b\uc790\uc778\uc9c0 \ud655\uc778\ud558\uae30(isalpha, isdigit, isalnum)","description":"\ucd5c\uadfc\uc5d0 \ubb38\uc790\uc5f4\uc5d0\uc11c \uc54c\ud30c\ubcb3\uc758 \ube48\ub3c4\ub97c \ud655\uc778\ud558\ub294 \ubc29\ubc95\uc5d0 \ub300\ud574\uc11c \uac04\ub2e8\ud558\uac8c \ud3ec\uc2a4\ud305\uc744 \ud588\uc5c8\ub358 \uc801\uc774 \uc788\uc2b5\ub2c8\ub2e4. \uc774\ubc88\uc5d0\ub294 \uadf8\uc640 \uc720\uc0ac\ud558\uac8c \ubb38\uc790\uc5f4\uc774 \uc54c\ud30c\ubcb3\uc778\uc9c0 \ud655\uc778\ud558\ub294 \ubc29\ubc95, \ub610\ub294 \uc22b\uc790\uc778\uc9c0 \ud655\uc778\ud558\ub294 \ubc29\ubc95, \uadf8\ub9ac\uace0 \uc54c\ud30c\ubcb3..","author":{"@type":"Person","name":"SmartLeader \ub054\uc190"},"image":{"@type":"ImageObject","url":"https:\/\/t1.daumcdn.net\/tistory_admin\/static\/images\/openGraph\/opengraph.png","width":"800px","height":"800px"},"datePublished":"20200314T06:58:01+09:00","dateModified":"20200314T06:58:02+09:00","publisher":{"@type":"Organization","name":"TISTORY","logo":{"@type":"ImageObject","url":"https:\/\/t1.daumcdn.net\/tistory_admin\/static\/images\/openGraph\/opengraph.png","width":"800px","height":"800px"}}}</script><meta name="robots" content="max-image-preview:large">
+<!-- END STRUCTURED_DATA -->
+
+        <script data-ad-host="ca-host-pub-9691043933427338" data-ad-client="ca-pub-1305801947609940" async="" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/f.txt"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-121305250-1');
+</script>
+	
+<script async="" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/f.txt"></script>		 
+	<script async="" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/f.txt"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-1305801947609940",
+          enable_page_level_ads: true
+     });
+</script>
+	<meta name="google-site-verification" content="zJ-p7lx0myjDKfgazBRMQL3jKVVGhFkPNWvi-x2v-3c">
+	
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width">
+	<title>파이썬[Python] 알파벳/숫자인지 확인하기(isalpha, isdigit, isalnum)</title>
+	<link rel="alternate" type="application/rss+xml" title="앱피아" href="https://appia.tistory.com/rss">
+
+	<link rel="stylesheet" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/style.css">
+	<link rel="stylesheet" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/font(1).css">
+	<style>
+		
+		.wrap_sub {
+			background-image: url('https://t1.daumcdn.net/tistory/0/Ray2/images/header_default.jpg');
+		}
+		
+	</style>
+
+	<!--[if lt IE 9]>
+	<script src="//t1.daumcdn.net/tistory_admin/lib/jquery/jquery-1.12.4.min.js"></script>
+	<![endif]-->
+	<!--[if gte IE 9]><!-->
+	<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/jquery-3.2.1.min.js.다운로드"></script>
+	<!--<![endif]-->
+<!-- BEGIN GOOGLE_SITE_VERIFICATION -->
+<meta name="google-site-verification" content="zJ-p7lx0myjDKfgazBRMQL3jKVVGhFkPNWvi-x2v-3c">
+<!-- END GOOGLE_SITE_VERIFICATION --><link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/shareEntryWithSNS.css">
+<script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/shareEntryWithSNS.js.다운로드"></script>
+
+<style type="text/css">
+		#daumSearchBox {
+			height: 21px;
+			background-image : url(//i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bg_search2_2.gif);
+			margin: 5px auto ;
+			padding: 0;
+		}
+		#daumSearchBox input {
+			background: none;
+			margin : 0;
+			padding : 0;
+			border : 0;
+		}
+		#daumSearchBox #daumLogo {
+			width: 34px;
+			height: 21px;
+			float: left;
+			margin-right: 5px;
+			background-image : url(//i1.daumcdn.net/img-media/tistory/img/bg_search1_2_2010ci.gif);
+		}
+		#daumSearchBox #show_q {
+			background-color: transparent;
+			border: none;
+			font: 12px Gulim, Sans-serif;
+			color: #555;
+			margin-top: 4px;
+			margin-right: 15px;
+			float: left;
+		}
+
+		#daumSearchBox #show_btn {
+			background-image : url(//i1.daumcdn.net/imgsrc.search/search_all/show/tistory/plugin/bt_search_2.gif);
+			width: 37px;
+			height: 21px;
+			float: left;
+			margin:0;
+			cursor:pointer;
+			text-indent:-1000em;
+		}
+	</style>
+<link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/style(1).css">
+<script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/profile.js.다운로드"></script>
+	<style type="text/css">
+		.another_category { border: 1px solid #E5E5E5; padding: 10px 10px 5px; margin:10px 0; clear: both; }
+		.another_category h4 { font-size: 12px !important; margin: 0 !important; border-bottom: 1px solid #E5E5E5 !important; padding: 2px 0 6px !important; }
+		.another_category h4 a { font-weight: bold !important; }
+		.another_category table { table-layout: fixed; border-collapse: collapse; width: 100% !important; margin-top: 10px !important; }
+		* html .another_category table { width: auto !important; }
+		*:first-child+html .another_category table { width: auto !important; }
+		.another_category th, .another_category td { padding: 0 0 4px !important; }
+		.another_category th { text-align: left; font-size: 12px !important; font-weight: normal;  word-break: break-all; overflow: hidden; line-height: 1.5; }
+		.another_category td { text-align: right; width: 80px; font-size: 11px; }
+		.another_category th a { font-weight: normal; text-decoration: none; border: none !important; }
+		.another_category th a.current{ font-weight: bold; text-decoration: none !important; border-bottom: 1px solid !important; }
+		.another_category th span { font-weight: normal; text-decoration: none; font: 10px Tahoma, Sans-serif; border: none !important; }
+
+		.another_category_color_gray, .another_category_color_gray h4 { border-color: #E5E5E5 !important; }
+		.another_category_color_gray * { color: #909090 !important; }
+		.another_category_color_gray th a.current{border-color:#909090 !important;}
+		.another_category_color_gray h4, .another_category_color_gray h4 a { color: #737373 !important; }
+
+
+		.another_category_color_red, .another_category_color_red h4 { border-color: #F6D4D3 !important;  }
+		.another_category_color_red * { color: #E86869 !important; }
+		.another_category_color_red th a.current{border-color:#E86869 !important;}
+		.another_category_color_red h4, .another_category_color_red h4 a { color: #ED0908 !important; }
+
+
+		.another_category_color_green, .another_category_color_green h4 { border-color: #CCE7C8 !important; }
+		.another_category_color_green * { color: #64C05B !important; }
+		.another_category_color_green th a.current{border-color:#64C05B !important;}
+		.another_category_color_green h4, .another_category_color_green h4 a { color: #3EA731 !important; }
+
+
+		.another_category_color_blue, .another_category_color_blue h4 { border-color: #C8DAF2 !important; }
+		.another_category_color_blue * { color: #477FD6 !important; }
+		.another_category_color_blue th a.current{border-color:#477FD6 !important;}
+		.another_category_color_blue h4, .another_category_color_blue h4 a { color: #1960CA !important; }
+
+
+		.another_category_color_violet, .another_category_color_violet h4 { border-color: #E1CEEC !important;  }
+		.another_category_color_violet * { color:#9D64C5 !important; }
+		.another_category_color_violet th a.current{border-color:#9D64C5 !important;}
+		.another_category_color_violet h4, .another_category_color_violet h4 a { color: #7E2CB5 !important; }
+	</style>
+<script type="text/javascript">
+        
+        window.TistoryBlog = {
+            basePath: "",
+            url: "https://appia.tistory.com",
+            tistoryUrl: "https://appia.tistory.com",
+			manageUrl: 'https://appia.tistory.com/manage',
+            token: 'ijlnb09815c4u0JtHIF4ag=='
+        };
+        var servicePath = "";
+        var blogURL = "";
+    </script>
+
+	<script> (function() { window.orgjQuery = window.jQuery; window.jQuery = tjQuery })()</script>
+    <script type="text/javascript" defer="" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/reaction-button-container.min.js.다운로드"></script>
+    <script> (function() { window.jQuery = window.orgjQuery; delete window.orgjQuery })()</script>
+        <script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/base.js.다운로드"></script>
+        <link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/dialog.css">
+            <link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/font(2).css">
+    <link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/postBtn.css">
+        <link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/tistory.css">
+        <script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/kakao.min.js.다운로드"></script>
+
+        <link rel="stylesheet" type="text/css" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/revenue.css"><style type="text/css">#DragSchLayer{display:block;position:absolute;z-index:1000;width:61px;height:31px;margin:-30px 0px 0px -5px;background:url(//search1.daumcdn.net/search/statics/common/pi/btn_drag_rect.png);cursor:pointer}             @media             only screen and (-webkit-min-device-pixel-ratio: 1.5),             only screen and (min-device-pixel-ratio: 1.5),             only screen and (min-resolution: 1.5dppx) {             #DragSchLayer{background-image:url(//search1.daumcdn.net/search/statics/common/pi/r2/btn_drag_rect.png);background-size:61px 31px}}            </style></head>
+
+<body id="tt-body-page" class="vsc-initialized">
+<script type="text/javascript">
+	(function() {
+		if (!window.T) {
+			window.T = {}
+		}
+		window.T.config = {"TOP_SSL_URL":"https:\/\/www.tistory.com","PREVIEW":false,"ROLE":"guest","PREV_PAGE":"\/180","NEXT_PAGE":"\/177","BLOG":{"isDormancy":false,"title":"\uc571\ud53c\uc544"},"NEED_COMMENT_LOGIN":false,"COMMENT_LOGIN_CONFIRM_MESSAGE":"","LOGIN_URL":"https:\/\/www.tistory.com\/auth\/login\/?redirectUrl=http%3A%2F%2Fappia.tistory.com%2F178","DEFAULT_URL":"https:\/\/appia.tistory.com","USER":{"name":null,"homepage":null},"ROLE_GROUP":"visitor","SUBSCRIPTION":{"status":"none","isConnected":false,"isProcessing":false,"isPending":false,"isWait":false,"isNone":true},"IS_LOGIN":false,"HAS_BLOG":false,"TOP_URL":"https:\/\/www.tistory.com","JOIN_URL":"https:\/\/www.tistory.com\/member\/join"};
+		window.appInfo = {"domain":"tistory.com","topUrl":"https:\/\/www.tistory.com","loginUrl":"https:\/\/www.tistory.com\/auth\/login","logoutUrl":"https:\/\/www.tistory.com\/auth\/logout"};
+
+        window.initData = {};
+        
+	})();
+</script>
+
+<script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/common.js.다운로드"></script>
+<div style="margin:0; padding:0; border:none; background:none; float:none; clear:none; z-index:0"></div>
+
+	<div id="dkIndex">
+		<!--웹접근성용 바로가기 링크 모음-->
+		<a href="https://appia.tistory.com/178#dkBody">본문 바로가기</a>
+	</div>
+	<div id="dkWrap" class="wrap_skin">
+		<!-- 카테고리버튼 클릭시 'navi_on' 클래스 부여 -->
+		<div id="dkHead" role="banner" class="area_head">
+			<h1 class="screen_out">앱피아</h1>
+			<button type="button" class="btn_cate">
+				<span class="ico_skin ico_cate">카테고리</span>
+			</button>
+			<div class="area_search ">
+				<button type="button" class="btn_search">
+					<span class="ico_skin ico_search">검색하기</span>
+				</button>
+				
+					<form action="https://appia.tistory.com/178#" method="get" class="frm_search box_search" onsubmit="try{window.location.href=&#39;/search/&#39;+looseURIEncode(document.getElementsByName(&#39;search&#39;)[0].value);document.getElementsByName(&#39;search&#39;)[0].value=&#39;&#39;;return false;}catch(e){}">
+						<fieldset>
+							<legend class="screen_out">검색하기</legend>
+							<label for="search" class="lab_search screen_out">Search</label>
+							<input type="text" name="search" id="search" class="tf_search" placeholder="Search" value="" data-value="">
+							<span class="ico_skin ico_search"></span>
+						</fieldset>
+					</form>
+				
+			</div>
+			<div class="area_profile">
+				<div class="tit_post">
+					<a href="https://appia.tistory.com/" class="link_post">앱피아</a>
+				</div>
+				<span class="thumb_profile">
+                <img src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/e226702a7ac94e989c9e4fd132b6536a" class="img_profile" alt="프로필사진">
+            </span>
+				<span class="txt_profile">끔손</span>
+			</div>
+		</div>
+		<hr class="hide">
+		<div id="dkContent" class="cont_skin" role="main">
+			<div id="cMain">
+				<div id="mFeature" class="wrap_sub">
+					<div class="cont_sub">
+						<div class="inner_sub">
+							<div class="area_sub">
+								<div role="navigation" class="area_navi">
+									<ul class="tt_category">
+	<li class="">
+		<a class="link_tit" href="https://appia.tistory.com/category">
+			분류 전체보기							<span class="c_cnt">(650)</span>
+			
+							<img src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/new_ico_5.gif" alt="N" style="vertical-align:middle;padding-left:2px;">
+					</a>
+
+				<ul class="category_list">
+							<li class="">
+					<a class="link_item" href="https://appia.tistory.com/category/Python">
+						Python													<span class="c_cnt">(266)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Python/Python%20%EA%B8%B0%EB%B3%B8">
+									Python 기본
+																			<span class="c_cnt">(61)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Python/Python%20%EC%9D%91%EC%9A%A9">
+									Python 응용
+																			<span class="c_cnt">(79)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Python/Python%20Numpy">
+									Python Numpy
+																			<span class="c_cnt">(13)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Python/Python%20Pandas">
+									Python Pandas
+																			<span class="c_cnt">(18)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Python/Python%20Tk%20%28GUI%29">
+									Python Tk (GUI)
+																			<span class="c_cnt">(13)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Python/Python%20PyQt5%20%28GUI%29">
+									Python PyQt5 (GUI)
+																			<span class="c_cnt">(28)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Python/Python%20Crawler%5B%ED%81%AC%EB%A1%A4%EB%9F%AC%5D">
+									Python Crawler[크롤러]
+																			<span class="c_cnt">(7)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Python/Python%20%EC%A3%BC%EC%8B%9D">
+									Python 주식
+																			<span class="c_cnt">(24)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Python/Python%20Office%20%EC%9E%90%EB%8F%99%ED%99%94_EXCEL_Outlook">
+									Python Office 자동화_EXCEL_..
+																			<span class="c_cnt">(22)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://appia.tistory.com/category/Programming">
+						Programming													<span class="c_cnt">(66)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Programming/JAVA">
+									JAVA
+																			<span class="c_cnt">(5)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Programming/Stateflow">
+									Stateflow
+																			<span class="c_cnt">(16)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Programming/HTML%26CSS">
+									HTML&amp;CSS
+																			<span class="c_cnt">(19)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Programming/VisualBasic_VBA">
+									VisualBasic_VBA
+																			<span class="c_cnt">(25)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://appia.tistory.com/category/Development">
+						Development													<span class="c_cnt">(20)</span>
+						
+													<img src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/new_ico_5.gif" alt="N" style="vertical-align:middle;padding-left:2px;">
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Development/AUTOSAR">
+									AUTOSAR
+																			<span class="c_cnt">(4)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Development/Testing">
+									Testing
+																			<span class="c_cnt">(1)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Development/Communication">
+									Communication
+																			<span class="c_cnt">(2)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Development/ETC">
+									ETC
+																			<span class="c_cnt">(13)</span>
+									
+																			<img src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/new_ico_5.gif" alt="N" style="vertical-align:middle;padding-left:2px;">
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://appia.tistory.com/category/IT_OS_ETC..">
+						IT_OS_ETC..													<span class="c_cnt">(246)</span>
+						
+													<img src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/new_ico_5.gif" alt="N" style="vertical-align:middle;padding-left:2px;">
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/IT_OS_ETC../%5BOS%5DWindows10">
+									[OS]Windows10
+																			<span class="c_cnt">(126)</span>
+									
+																			<img src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/new_ico_5.gif" alt="N" style="vertical-align:middle;padding-left:2px;">
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/IT_OS_ETC../%5BOS%5DLinux%28Ubuntu%2CMintOS%29">
+									[OS]Linux(Ubuntu,MintOS)
+																			<span class="c_cnt">(7)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/IT_OS_ETC../%5BIT%5DExcel">
+									[IT]Excel
+																			<span class="c_cnt">(69)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/IT_OS_ETC../%5BIT%5DExcel%20Macro">
+									[IT]Excel Macro
+																			<span class="c_cnt">(3)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/IT_OS_ETC../%5BIT%5DOutlook_%EC%95%84%EC%9B%83%EB%A3%A9">
+									[IT]Outlook_아웃룩
+																			<span class="c_cnt">(21)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/IT_OS_ETC../%5BIT%5DPowerPoint">
+									[IT]PowerPoint
+																			<span class="c_cnt">(14)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://appia.tistory.com/category/%ED%9A%8C%EC%82%AC%EC%83%9D%ED%99%9C">
+						회사생활													<span class="c_cnt">(11)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://appia.tistory.com/category/Diary">
+						Diary													<span class="c_cnt">(1)</span>
+						
+											</a>
+
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://appia.tistory.com/category/%EC%9D%BC%EC%83%81">
+						일상													<span class="c_cnt">(22)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/%EC%9D%BC%EC%83%81/IT%20%EC%A0%9C%ED%92%88">
+									IT 제품
+																			<span class="c_cnt">(6)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/%EC%9D%BC%EC%83%81/%ED%8E%A0%EB%A6%AC%EC%84%B8%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B4%ED%94%84">
+									펠리세이드라이프
+																			<span class="c_cnt">(5)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/%EC%9D%BC%EC%83%81/%5B%EA%B5%AD%EB%82%B4%5D%EC%97%AC%ED%96%89%26%EB%A7%9B%EC%A7%91">
+									[국내]여행&amp;맛집
+																			<span class="c_cnt">(10)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+							<li class="">
+					<a class="link_item" href="https://appia.tistory.com/category/Mobile">
+						Mobile													<span class="c_cnt">(18)</span>
+						
+											</a>
+
+										<ul class="sub_category_list">
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Mobile/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C">
+									안드로이드
+																			<span class="c_cnt">(12)</span>
+									
+																	</a>
+							</li>
+													<li class="">
+								<a class="link_sub_item" href="https://appia.tistory.com/category/Mobile/IOS_%EC%95%84%EC%9D%B4%ED%8F%B0">
+									IOS_아이폰
+																			<span class="c_cnt">(4)</span>
+									
+																	</a>
+							</li>
+											</ul>
+					
+				</li>
+					</ul>
+			</li>
+</ul>
+									<a href="https://appia.tistory.com/guestbook" class="link_guestbook">Guestbook</a>
+								</div>
+								<div class="wrap_etc">
+									<div class="col_aside left_side">
+										                        <div class="revenue_unit_wrap ">
+               <div class="revenue_unit_item adsense  responsive">
+                    <div class="revenue_unit_info">반응형</div>
+                    <script async="" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/f.txt"></script>
+                    <ins class="adsbygoogle" style="display:block;" data-ad-host="ca-host-pub-9691043933427338" data-ad-client="ca-pub-1305801947609940" data-ad-format="auto"><iframe id="aswift_0" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/saved_resource.html"><iframe id="google_ads_frame0" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/saved_resource(1).html"></iframe></iframe></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({}); </script>
+               </div>
+            </div>                        <div class="revenue_unit_wrap ">
+                <div class="revenue_unit_item adfit">
+                    <div class="revenue_unit_info">250x250</div>
+                    <ins class="kakao_ad_area" style="display: inline-block; text-decoration: none;" data-ad-unit="DAN-LU2Oby1hCC9CbmSW" data-ad-width="250" data-ad-height="250px" id="kakao_ad_8khes1_7061" data-ad-rfseq="1" data-ad-viewable="standby" data-ad-rendered="N" data-ad-noadseq="1" data-ad-status="queue"></ins> 
+                    <script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/ba.min.js.다운로드" async=""></script>
+                </div>
+            </div>
+												<!-- 공지사항 -->
+												
+													<div class="box_aside">
+														<strong class="tit_aside">Notice</strong>
+														<ul class="list_board">
+															
+																<li><a href="https://appia.tistory.com/notice/127" class="link_board">파이썬[Python] 강의 목⋯</a></li>
+															
+														</ul>
+													</div>
+												
+											
+												<!-- 최근에 올라온 글 -->
+												<div class="box_aside">
+													<strong class="tit_aside">Recent Posts</strong>
+													<ul class="list_board">
+														
+															<li><a href="https://appia.tistory.com/726" class="link_board">[GitHub] 개인 Repository⋯</a></li>
+														
+
+															<li><a href="https://appia.tistory.com/725" class="link_board">[GitHub]  개인 Repositor⋯</a></li>
+														
+
+															<li><a href="https://appia.tistory.com/724" class="link_board">[윈도우10 Windows10] 크⋯</a></li>
+														
+
+															<li><a href="https://appia.tistory.com/723" class="link_board">[윈도우10 Windows10]크롬⋯</a></li>
+														
+													</ul>
+												</div>
+											
+												<!-- 최근에 달린 댓글 -->
+												<div class="box_aside">
+													<strong class="tit_aside">Recent Comments</strong>
+													<ul class="list_board">
+														
+															<li><a href="https://appia.tistory.com/195#comment15734955" class="link_board">맨 윗 행부터 가장 아래 행⋯</a></li>
+														
+
+															<li><a href="https://appia.tistory.com/506#comment15734812" class="link_board">하단 마우스 빨간불이 마우스⋯</a></li>
+														
+
+															<li><a href="https://appia.tistory.com/80#comment15732247" class="link_board">감사합니다. 수정하였습니다.</a></li>
+														
+
+															<li><a href="https://appia.tistory.com/80#comment15732018" class="link_board">promprt -&gt; prompt 오타 수정⋯</a></li>
+														
+													</ul>
+												</div>
+											
+												<!-- 링크 -->
+												<div class="box_aside">
+													<strong class="tit_aside">Link</strong>
+													<ul class="list_board">
+														
+													</ul>
+												</div>
+											
+									</div>
+
+
+									<div class="col_aside right_side">
+										
+												<!-- 달력 -->
+												<div class="box_aside box_calendar">
+															<table class="tt-calendar" cellpadding="0" cellspacing="1" style="width: 100%; table-layout: fixed">
+			<caption class="cal_month">
+				<a href="https://appia.tistory.com/archive/202108" title="1개월 앞의 달력을 보여줍니다.">«</a>
+				&nbsp;
+				<a href="https://appia.tistory.com/archive/202109" title="현재 달의 달력을 보여줍니다.">2021/09</a>
+				&nbsp;
+				<a href="https://appia.tistory.com/archive/202110" title="1개월 뒤의 달력을 보여줍니다.">»</a>
+			</caption>
+			<thead>
+			<tr>
+				<th class="cal_week2">일</th>
+				<th class="cal_week1">월</th>
+				<th class="cal_week1">화</th>
+				<th class="cal_week1">수</th>
+				<th class="cal_week1">목</th>
+				<th class="cal_week1">금</th>
+				<th class="cal_week1">토</th>
+			</tr>
+			</thead>
+			<tbody>
+					<tr class="cal_week">
+			<td class="cal_day1">&nbsp;</td>
+			<td class="cal_day1">&nbsp;</td>
+			<td class="cal_day1">&nbsp;</td>
+			<td class=" cal_day cal_day3">1</td>
+			<td class=" cal_day cal_day3">2</td>
+			<td class=" cal_day cal_day3">3</td>
+			<td class=" cal_day cal_day3">4</td>
+		</tr>
+		<tr class="cal_week cal_current_week">
+			<td class=" cal_day cal_day_sunday cal_day3"><a class="cal_click" href="https://appia.tistory.com/archive/20210905">5</a></td>
+			<td class=" cal_day cal_day3"><a class="cal_click" href="https://appia.tistory.com/archive/20210906">6</a></td>
+			<td class=" cal_day cal_day3"><a class="cal_click" href="https://appia.tistory.com/archive/20210907">7</a></td>
+			<td class=" cal_day cal_day3"><a class="cal_click" href="https://appia.tistory.com/archive/20210908">8</a></td>
+			<td class=" cal_day cal_day3"><a class="cal_click" href="https://appia.tistory.com/archive/20210909">9</a></td>
+			<td class=" cal_day cal_day4">10</td>
+			<td class=" cal_day cal_day3">11</td>
+		</tr>
+		<tr class="cal_week">
+			<td class=" cal_day cal_day_sunday cal_day3">12</td>
+			<td class=" cal_day cal_day3">13</td>
+			<td class=" cal_day cal_day3">14</td>
+			<td class=" cal_day cal_day3">15</td>
+			<td class=" cal_day cal_day3">16</td>
+			<td class=" cal_day cal_day3">17</td>
+			<td class=" cal_day cal_day3">18</td>
+		</tr>
+		<tr class="cal_week">
+			<td class=" cal_day cal_day_sunday cal_day3">19</td>
+			<td class=" cal_day cal_day3">20</td>
+			<td class=" cal_day cal_day3">21</td>
+			<td class=" cal_day cal_day3">22</td>
+			<td class=" cal_day cal_day3">23</td>
+			<td class=" cal_day cal_day3">24</td>
+			<td class=" cal_day cal_day3">25</td>
+		</tr>
+		<tr class="cal_week">
+			<td class=" cal_day cal_day_sunday cal_day3">26</td>
+			<td class=" cal_day cal_day3">27</td>
+			<td class=" cal_day cal_day3">28</td>
+			<td class=" cal_day cal_day3">29</td>
+			<td class=" cal_day cal_day3">30</td>
+			<td class="cal_day2">&nbsp;</td>
+			<td class="cal_day2">&nbsp;</td>
+		</tr>
+			</tbody>
+		</table>
+		
+												</div>
+											
+												<!-- 태그 클라우드 -->
+												<div class="box_aside box_tag">
+													<strong class="tit_aside">Tags</strong>
+													<ul class="list_tag">
+														
+															<li><a href="https://appia.tistory.com/tag/pandas" class="link_tag cloud4">pandas</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/python" class="link_tag cloud1">python</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%ED%8C%8C%EC%9D%B4%EC%8D%ACGUI" class="link_tag cloud4">파이썬GUI</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/Tkinter" class="link_tag cloud4">Tkinter</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/win32com" class="link_tag cloud4">win32com</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/pyqt5" class="link_tag cloud4">pyqt5</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/stateflow" class="link_tag cloud4">stateflow</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%ED%8C%8C%EC%9B%8C%ED%8F%AC%EC%9D%B8%ED%8A%B8" class="link_tag cloud4">파워포인트</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%EC%97%91%EC%85%80" class="link_tag cloud3">엑셀</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/VBA" class="link_tag cloud4">VBA</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%ED%8C%8C%EC%9D%B4%EC%8D%AC3" class="link_tag cloud4">파이썬3</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/python3" class="link_tag cloud4">python3</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/matlab" class="link_tag cloud4">matlab</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/PowerPoint" class="link_tag cloud4">PowerPoint</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%EB%AC%B8%EC%9E%90%EC%97%B4" class="link_tag cloud4">문자열</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/Windows10" class="link_tag cloud4">Windows10</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%ED%8C%8C%EC%9D%B4%EC%8D%AC" class="link_tag cloud2">파이썬</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/numpy" class="link_tag cloud4">numpy</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/Outlook" class="link_tag cloud4">Outlook</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%EC%95%84%EC%9B%83%EB%A3%A9" class="link_tag cloud4">아웃룩</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/Simulink" class="link_tag cloud4">Simulink</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/pythongui" class="link_tag cloud4">pythongui</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%EC%9C%88%EB%8F%84%EC%9A%B010" class="link_tag cloud4">윈도우10</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%EC%98%A4%ED%94%BC%EC%8A%A4" class="link_tag cloud4">오피스</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/GUI" class="link_tag cloud4">GUI</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/Excel" class="link_tag cloud3">Excel</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/office" class="link_tag cloud4">office</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%EB%B9%84%EC%A3%BC%EC%96%BC%EB%B2%A0%EC%9D%B4%EC%A7%81" class="link_tag cloud4">비주얼베이직</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/%ED%81%AC%EB%A1%AC" class="link_tag cloud4">크롬</a></li>
+														
+															<li><a href="https://appia.tistory.com/tag/html" class="link_tag cloud4">html</a></li>
+														
+													</ul>
+													<a href="https://appia.tistory.com/tag" class="link_more">more</a>
+												</div>
+											
+												<!-- 글 보관함 -->
+												<div class="box_aside box_archive">
+													<strong class="tit_aside">Archives</strong>
+													<ul class="list_keep">
+														
+															<li><a href="https://appia.tistory.com/archive/202109" class="link_keep">2021/09</a> (6)</li>
+														
+
+															<li><a href="https://appia.tistory.com/archive/202108" class="link_keep">2021/08</a> (19)</li>
+														
+
+															<li><a href="https://appia.tistory.com/archive/202107" class="link_keep">2021/07</a> (13)</li>
+														
+
+															<li><a href="https://appia.tistory.com/archive/202106" class="link_keep">2021/06</a> (30)</li>
+														
+													</ul>
+												</div>
+											
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="button" class="ico_skin btn_close">닫기</button>
+
+						<strong class="screen_out">관리 메뉴</strong>
+						<ul class="list_control">
+							<li><a href="https://appia.tistory.com/manage/entry/post" class="ico_skin link_write" title="글쓰기">글쓰기</a></li>
+							<li><a href="https://appia.tistory.com/guestbook" class="ico_skin link_memo" title="방명록">방명록</a></li>
+							<li><a href="https://appia.tistory.com/rss" class="ico_skin link_rss" title="RSS">RSS</a></li>
+							<li><a href="https://appia.tistory.com/manage" class="ico_skin link_manage" title="관리">관리</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div id="mArticle" class="article_skin">
+
+					
+
+					<div class="index_title">
+						<h2 class="tit_skin"><span class="txt_title">앱피아</span></h2>
+					</div>
+
+					
+						
+
+
+						
+							<h2 id="dkBody" class="screen_out">파이썬[Python] 알파벳/숫자인지 확인하기(isalpha, isdigit, isalnum) 본문</h2>
+							<div class="area_title">
+								<strong class="tit_category"><a href="https://appia.tistory.com/category/Python/Python%20%EC%9D%91%EC%9A%A9">Python/Python 응용</a></strong>
+								<h3 class="tit_post">파이썬[Python] 알파벳/숫자인지 확인하기(isalpha, isdigit, isalnum)</h3>
+								<span class="info_post">SmartLeader 끔손
+                                <span class="txt_bar"></span>2020. 3. 14. 06:58
+								
+							</span>
+							</div>
+
+							<div class="area_view">
+								<div class="tt_article_useless_p_margin contents_style">            <div class="revenue_unit_wrap ">
+               <div class="revenue_unit_item adsense  responsive">
+                    <div class="revenue_unit_info">반응형</div>
+                    <script async="" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/f.txt"></script>
+                    <ins class="adsbygoogle" style="display:block;" data-ad-host="ca-host-pub-9691043933427338" data-ad-client="ca-pub-1305801947609940" data-ad-format="auto"><iframe id="aswift_1" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/saved_resource(2).html"><iframe id="google_ads_frame1" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/saved_resource(3).html"></iframe></iframe></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({}); </script>
+               </div>
+            </div><p>최근에 문자열에서 알파벳의 빈도를 확인하는 방법에 대해서 간단하게 포스팅을 했었던 적이 있습니다. 이번에는 그와 유사하게 문자열이 알파벳인지 확인하는 방법, 또는 숫자인지 확인하는 방법, 그리고 알파벳 또는 숫자인지 확인하는 방법에 대해서 3가지로 나누어 살펴보고자 합니다. 이 부분에 대해서는 별도의 모듈 없이 기본 내장 되어 있는 함수를 통해서 확인이 가능합니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p><b>알파벳인지 확인하기(isalpha)&nbsp;</b></p>
+<p>문자열의 구성이 알파벳인지에 대해서 확인하는 방법입니다. 저는 isalpha()내장 함수를 사용할 것입니다. 하지만, 단 주의가 필요합니다. 문자열에 숫자 및 공백이 포함되어 있으면 False를 리턴합니다. 그럼 다음 예제를 한번 살펴보겠습니다.&nbsp;</p>
+<p>example)</p>
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Appia&nbsp;Example&nbsp;for&nbsp;isalpha</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;It&nbsp;is&nbsp;to&nbsp;explain&nbsp;how&nbsp;to&nbsp;check&nbsp;whether&nbsp;the&nbsp;string&nbsp;consist&nbsp;of&nbsp;alphabet&nbsp;or&nbsp;not.</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex1&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'A'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex2&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'ABC'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex3&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">"앱피아"</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex4&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">"Hello&nbsp;Appia"</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex5&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">"100Appia"</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#print&nbsp;the&nbsp;is&nbsp;the&nbsp;result&nbsp;for&nbsp;isalpha()</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex1.isalpha())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex2.isalpha())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex3.isalpha())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex4.isalpha())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex5.isalpha())</div></div><div style="text-align:right;margin-top:-13px;margin-right:5px;font-size:9px;font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color:#4f4f4ftext-decoration:none">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></tbody></table></div>
+<p>result)&nbsp;</p>
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">True</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">True</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">True</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">False</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">False</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></tbody></table></div>
+<p>&nbsp;</p>
+<p>결과를 보시면 다음과 같이 한글을 지원하는 것을 알 수 있습니다. 저의 경우 오래동안 파이썬 2점대 버전을 사용하다 보니, 자연스럽게 영어로만 사용을 했습니다.(파이썬 2점대 버전은 한글을 미지원) 다음과 같은 부분을 조심해야 합니다. 즉, 공백이 있는 경우나, 숫자와 혼용되어 사용되면, False를 리턴합니다.&nbsp;&nbsp;</p>
+<p>&nbsp;</p>
+<p><b>숫자인지 확인하기(isdigit)</b></p>
+<p>문자열의 구성이 모두 숫자인지 확인하는 메소드를 사용할 것입니다. 그 메소드는 isdigit()입니다. 위와 동일하게 이 메소드의 리턴값도 boolean형태입니다. 그럼 다음 예제를 한번 살펴보겠습니다.&nbsp;</p>
+<p><span style="color: #333333;">example)</span></p>
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Appia&nbsp;Example&nbsp;for&nbsp;isalpha</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;It&nbsp;is&nbsp;to&nbsp;explain&nbsp;how&nbsp;to&nbsp;check&nbsp;whether&nbsp;the&nbsp;string&nbsp;consist&nbsp;of&nbsp;digit&nbsp;or&nbsp;not.</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex1&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'010-1234-5678'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex2&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'123456'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex3&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">"R4R3"</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex1.isdigit())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex2.isdigit())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex3.isdigit())</div></div><div style="text-align:right;margin-top:-13px;margin-right:5px;font-size:9px;font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color:#4f4f4ftext-decoration:none">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></tbody></table></div>
+<p>result)</p>
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">False</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">True</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">False</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></tbody></table></div>
+<p>먼저, Ex1과 같이 -등이 사용되면, 숫자로만 구성된 것이 아니기 때문에 관련해서 False로 사용됩니다. 또한 Ex3과 같이 문자과 혼용되어 사용되어도 False로 리턴됩니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p><b>알파벳 또는 숫자인지 확인하기(isalnum)&nbsp;</b></p>
+<p><span style="color: #333333;">문자열이 알파벳인지 확인하는 방법, 또는 숫자인지 확인하는 방법은 생각보다 많이 사용되지 않습니다. 다양한 이유가 있겠지만, 문자열 구성에는 생각보다 숫자와 문자가 혼용되는 경우가 매우 많기 때문입니다. 그래서 위의 이 두가지를 혼용해서 문자열이 알파벳 또는 숫자인지 확인하는 방법에 대해서 살펴보겠습니다.&nbsp;</span></p>
+<p>example)&nbsp;</p>
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;Appia&nbsp;Example&nbsp;for&nbsp;isalpha</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#999999">#&nbsp;It&nbsp;is&nbsp;to&nbsp;explain&nbsp;how&nbsp;to&nbsp;check&nbsp;whether&nbsp;the&nbsp;string&nbsp;consist&nbsp;of&nbsp;digit/alphabet&nbsp;or&nbsp;not.</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex1&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'안녕'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex2&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">'Hello3'</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex3&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">"1.Where"</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">Ex4&nbsp;<span style="color:#0086b3"></span><span style="color:#ff3399">=</span>&nbsp;<span style="color:#ffd500">"1&nbsp;Where"</span></div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex1.isalnum())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex2.isalnum())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex3.isalnum())</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%"><span style="color:#4be6fa">print</span>(Ex4.isalnum())</div></div><div style="text-align:right;margin-top:-13px;margin-right:5px;font-size:9px;font-style:italic"><a href="http://colorscripter.com/info#e" target="_blank" style="color:#4f4f4ftext-decoration:none">Colored by Color Scripter</a></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></tbody></table></div>
+<p><span style="color: #333333;">result)</span></p>
+<div class="colorscripter-code" style="color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important; position:relative !important;overflow:auto"><table class="colorscripter-code-table" style="margin:0;padding:0;border:none;background-color:#272727;border-radius:4px;" cellspacing="0" cellpadding="0"><tbody><tr><td style="padding:6px 0;text-align:left"><div style="margin:0;padding:0;color:#f0f0f0;font-family:Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace !important;line-height:130%"><div style="padding:0 6px; white-space:pre; line-height:130%">True</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">True</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">False</div><div style="padding:0 6px; white-space:pre; line-height:130%">&nbsp;</div><div style="padding:0 6px; white-space:pre; line-height:130%">False</div></div></td><td style="vertical-align:bottom;padding:0 2px 4px 0"><a href="http://colorscripter.com/info#e" target="_blank" style="text-decoration:none;color:white"><span style="font-size:9px;word-break:normal;background-color:#4f4f4f;color:white;border-radius:10px;padding:1px">cs</span></a></td></tr></tbody></table></div>
+<p>앞서서 본바와 같이 공백과 특수 문자로 인해서 다음과 같은 경우에 False를 나타냅니다. 위의 <span style="color: #333333;">문자열이 알파벳인지 확인하는 방법, 또는 숫자인지 확인하는 방법</span> 교집합 형태로 보시면 조금 더 이해가 쉬울 것입니다.&nbsp;</p>
+<p>&nbsp;</p>
+<p>오늘 포스팅은 <span style="color: #333333;">문자열이 알파벳인지 확인하는 방법, 또는 숫자인지 확인하는 방법, 그리고 알파벳 또는 숫자인지 확인하는 방법에 대해 살펴봤습니다. 생각보다 코딩할 때 다음과 같은 조건에 대해서 많이 사용하게 됩니다. 혹시 궁금하시거나 문의사항이 있으면 언제든지 댓글 및 방명록에 글 남겨주시길 바랍니다.&nbsp;</span></p>            <div class="revenue_unit_wrap ">
+               <div class="revenue_unit_item adsense  responsive">
+                    <div class="revenue_unit_info">반응형</div>
+                    <script async="" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/f.txt"></script>
+                    <ins class="adsbygoogle" style="display:block;" data-ad-host="ca-host-pub-9691043933427338" data-ad-client="ca-pub-1305801947609940" data-ad-format="auto"><iframe id="aswift_2" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/saved_resource(4).html"><iframe id="google_ads_frame2" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/saved_resource(5).html"></iframe></iframe></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({}); </script>
+               </div>
+            </div><div class="container_postbtn #post_button_group">
+    <div class="postbtn_like">
+        
+<script>
+    window.ReactionButtonType = 'reaction';
+    window.ReactionApiUrl = '//appia.tistory.com/reaction';
+    window.ReactionReqBody = {
+        entryId: 178    }
+</script>
+<div class="wrap_btn" id="reaction-178"><button class="btn_post uoc-icon"><div class="uoc-icon"><span class="ico_postbtn ico_like">좋아요</span><span class="txt_like uoc-count">2</span></div></button></div>
+<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/reaction-button-container.min.js.다운로드"></script>
+        <div class="wrap_btn wrap_btn_share">
+    <button type="button" class="btn_post sns_btn btn_share" data-thumbnail-url="https://t1.daumcdn.net/tistory_admin/static/images/openGraph/opengraph.png" data-title="파이썬[Python] 알파벳/숫자인지 확인하기(isalpha, isdigit, isalnum)" data-description="최근에 문자열에서 알파벳의 빈도를 확인하는 방법에 대해서 간단하게 포스팅을 했었던 적이 있습니다. 이번에는 그와 유사하게 문자열이 알파벳인지 확인하는 방법, 또는 숫자인지 확인하는 방법, 그리고 알파벳.." data-profile-image="https://tistory2.daumcdn.net/tistory/2919201/attach/e226702a7ac94e989c9e4fd132b6536a" data-profile-name="SmartLeader 끔손" data-pc-url="https://appia.tistory.com/178" data-relative-pc-url="/178" data-blog-title="앱피아">
+        <span class="ico_postbtn ico_share">공유하기</span>
+    </button>
+</div>
+                <div class="wrap_btn wrap_btn_etc" data-entry-id="178" data-entry-visibility="public" data-category-visibility="public">
+    <button type="button" class="btn_post btn_etc2"><span class="ico_postbtn ico_etc">글 요소</span></button>
+</div>
+    </div>
+    <button type="button" class="btn_menu_toolbar btn_subscription  #subscribe" data-blog-id="2919201" data-url="https://appia.tistory.com/178" data-device="web_pc">
+    <em class="txt_state">구독하기</em>
+    <strong class="txt_tool_id">앱피아</strong>
+    <span class="img_common_tistory ico_check_type1"></span>
+</button>
+    <div class="postbtn_ccl" data-ccl-type="1">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.ko" target="_blank" class="link_ccl">
+        <span class="bundle_ccl">
+            <span class="ico_postbtn ico_ccl1">저작자표시</span><span class="ico_postbtn ico_ccl2">비영리</span><span class="ico_postbtn ico_ccl3">변경금지</span>        </span>
+    </a>
+</div>
+    <!--
+<rdf:RDF xmlns="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <Work rdf:about="">
+        <license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/2.0/kr/" />
+    </Work>
+    <License rdf:about="http://creativecommons.org/licenses/by-nc-nd/">
+        <permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <requires rdf:resource="http://web.resource.org/cc/Notice"/>
+        <requires rdf:resource="http://web.resource.org/cc/Attribution"/>
+                        <prohibits rdf:resource="http://web.resource.org/cc/CommercialUse"/>
+            </License>
+</rdf:RDF>
+-->
+</div><div class="tt-plugin tt-share-entry-with-sns tt-sns-icon-alignment-left tt-sns-icon-size-big">
+	<div class="tt-sns-wrap" id="ttSnsWrap-178">
+		<ul class="tt-sns-service-default">
+			<li class="tt-sns-service-kakaostory"><a href="javascript:;" onclick="ShareEntryWithSNS.share(&#39;kakaostory&#39;, &#39;178&#39;, &#39;%ED%8C%8C%EC%9D%B4%EC%8D%AC%5BPython%5D%20%EC%95%8C%ED%8C%8C%EB%B2%B3%2F%EC%88%AB%EC%9E%90%EC%9D%B8%EC%A7%80%20%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0%28isalpha%2C%20isdigit%2C%20isalnum%29&#39;);">카카오스토리</a></li>
+			<li class="tt-sns-service-twitter"><a href="javascript:;" onclick="ShareEntryWithSNS.share(&#39;twitter&#39;, &#39;178&#39;, &#39;%ED%8C%8C%EC%9D%B4%EC%8D%AC%5BPython%5D%20%EC%95%8C%ED%8C%8C%EB%B2%B3%2F%EC%88%AB%EC%9E%90%EC%9D%B8%EC%A7%80%20%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0%28isalpha%2C%20isdigit%2C%20isalnum%29&#39;);">트위터</a></li>
+			<li class="tt-sns-service-facebook"><a href="javascript:;" onclick="ShareEntryWithSNS.share(&#39;facebook&#39;, &#39;178&#39;, &#39;%ED%8C%8C%EC%9D%B4%EC%8D%AC%5BPython%5D%20%EC%95%8C%ED%8C%8C%EB%B2%B3%2F%EC%88%AB%EC%9E%90%EC%9D%B8%EC%A7%80%20%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0%28isalpha%2C%20isdigit%2C%20isalnum%29&#39;);">페이스북</a></li>
+		</ul>
+	</div>
+	<div class="tt-sns-clear"></div>
+</div>
+<div class="another_category another_category_color_gray">
+<h4>'<a href="https://appia.tistory.com/category/Python">Python</a>&nbsp;&gt;&nbsp;<a href="https://appia.tistory.com/category/Python/Python%20%EC%9D%91%EC%9A%A9">Python 응용</a>' 카테고리의 다른 글</h4>
+<table>
+<tbody><tr>
+<th>
+<a href="https://appia.tistory.com/202?category=849954">파이썬[Python] 2개 이상의 딕셔너리(Dictionary) 합치기</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2020.04.07</td>
+</tr>
+<tr>
+<th>
+<a href="https://appia.tistory.com/186?category=849954">파이썬[Python] List를 이용한 경우의 수 추출하기</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2020.03.22</td>
+</tr>
+<tr>
+<th>
+<a href="https://appia.tistory.com/178?category=849954" class="current">파이썬[Python] 알파벳/숫자인지 확인하기(isalpha, isdigit, isalnum)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2020.03.14</td>
+</tr>
+<tr>
+<th>
+<a href="https://appia.tistory.com/172?category=849954">파이썬[Python] 단어들의 사용빈도 확인하기</a>&nbsp;&nbsp;<span>(2)</span>
+</th>
+<td>
+2020.03.10</td>
+</tr>
+<tr>
+<th>
+<a href="https://appia.tistory.com/171?category=849954">파이썬[Python] Dictionary(딕셔너리) 데이터 출력하기</a>&nbsp;&nbsp;<span>(2)</span>
+</th>
+<td>
+2020.03.09</td>
+</tr>
+<tr>
+<th>
+<a href="https://appia.tistory.com/170?category=849954">파이썬[Python] List 역순으로 만들기 (reversed,reverse)</a>&nbsp;&nbsp;<span>(0)</span>
+</th>
+<td>
+2020.03.09</td>
+</tr>
+</tbody></table></div></div>
+							</div>
+							<div class="area_etc">
+								
+									<dl class="list_tag">
+										<dt>Tag</dt>
+										<dd><a href="https://appia.tistory.com/tag/isalnum" rel="tag">isalnum</a>,
+<a href="https://appia.tistory.com/tag/isalpha" rel="tag">isalpha</a>,
+<a href="https://appia.tistory.com/tag/isdigit" rel="tag">isdigit</a>,
+<a href="https://appia.tistory.com/tag/python" rel="tag">python</a>,
+<a href="https://appia.tistory.com/tag/%EB%AC%B8%EC%9E%90%EC%97%B4%EC%88%AB%EC%9E%90%EC%9D%B8%EC%A7%80%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0" rel="tag">문자열숫자인지확인하기</a>,
+<a href="https://appia.tistory.com/tag/%EB%AC%B8%EC%9E%90%EC%97%B4%EC%95%8C%ED%8C%8C%EB%B2%B3%EC%9D%B8%EC%A7%80%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0" rel="tag">문자열알파벳인지확인하기</a>,
+<a href="https://appia.tistory.com/tag/%ED%8C%8C%EC%9D%B4%EC%8D%AC" rel="tag">파이썬</a></dd>
+									</dl>
+								
+							</div>
+
+							
+								<div class="area_related">
+									<strong class="tit_related">'Python/Python 응용' Related Articles</strong>
+									<ul class="list_related">
+										
+											<li class="text_type">
+												<a href="https://appia.tistory.com/202?category=849954" class="link_related">
+													
+													<span class="txt_related">파이썬[Python] 2개 이상의 딕셔너리(Dictionary) 합치기</span>
+													<span class="date_related">2020.04.07</span>
+													<span class="frame_related"></span>
+												</a>
+											</li>
+										
+											<li class="text_type">
+												<a href="https://appia.tistory.com/186?category=849954" class="link_related">
+													
+													<span class="txt_related">파이썬[Python] List를 이용한 경우의 수 추출하기</span>
+													<span class="date_related">2020.03.22</span>
+													<span class="frame_related"></span>
+												</a>
+											</li>
+										
+											<li class="text_type">
+												<a href="https://appia.tistory.com/172?category=849954" class="link_related">
+													
+													<span class="txt_related">파이썬[Python] 단어들의 사용빈도 확인하기</span>
+													<span class="date_related">2020.03.10</span>
+													<span class="frame_related"></span>
+												</a>
+											</li>
+										
+											<li class="text_type">
+												<a href="https://appia.tistory.com/171?category=849954" class="link_related">
+													
+													<span class="txt_related">파이썬[Python] Dictionary(딕셔너리) 데이터 출력하기</span>
+													<span class="date_related">2020.03.09</span>
+													<span class="frame_related"></span>
+												</a>
+											</li>
+										
+									</ul>
+									<a href="https://appia.tistory.com/category/Python/Python%20%EC%9D%91%EC%9A%A9" class="link_more">more</a>
+								</div>
+							
+
+							<div class="area_reply">
+								<strong class="tit_reply" onclick=""><span id="commentCount178_0">0</span>  Comments</strong>
+								<div id="entry178Comment">
+									
+
+									<form method="post" action="https://appia.tistory.com/comment/add/178" onsubmit="return false" style="margin: 0">
+										<fieldset class="fld_reply">
+											<legend class="screen_out">댓글쓰기 폼</legend>
+											
+												
+													<div class="writer_info">
+                                                    <span class="info_name">
+                                                        <label for="name" class="lab_info screen_out">이름</label>
+                                                        <span class="wrap_info">
+                                                            <input type="text" name="name" id="name" class="inp_info" placeholder="Name" tabindex="1">
+                                                        </span>
+                                                    </span>
+														<span class="info_pw ">
+                                                        <label for="password" class="lab_info screen_out">비밀번호</label>
+                                                        <span class="wrap_info">
+                                                            <input type="password" name="password" id="password" class="inp_info" placeholder="Password" tabindex="2">
+                                                        </span>
+                                                    </span>
+													</div>
+												
+												<div class="writer_check">
+                                                <span class="check_secret ">
+                                                    <input type="checkbox" name="secret" id="secret" class="inp_secret" tabindex="4">
+                                                    <label for="secret" class="lab_secret">
+                                                        <span class="ico_skin ico_check"></span>
+                                                        Secret
+                                                    </label>
+                                                </span>
+												</div>
+											
+
+											<div class="reply_write ">
+												<label for="comment" class="lab_write screen_out">내용</label>
+												<textarea name="comment" id="comment" class="tf_reply" placeholder="여러분의 소중한 댓글을 입력해주세요" tabindex="3"></textarea>
+											</div>
+
+											<div class="writer_btn">
+												<button type="submit" class="btn_enter" onclick="addComment(this, 178); return false;" tabindex="5">Send</button>
+											</div>
+										</fieldset>
+									</form>
+								</div><script type="text/javascript">loadedComments[178]=true;findFragmentAndHighlight(178)</script>
+							</div>
+
+
+						
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+
+					
+						<div class="area_paging">
+    					<span class="inner_paging">
+                            <a href="https://appia.tistory.com/180" class="btn_prev "><span class="ico_skin ico_prev"></span>Prev</a>
+    						
+    							<a href="https://appia.tistory.com/726" class="link_page"><span>1</span></a>
+    						
+    							<a class="link_page"><span>···</span></a>
+    						
+    							<a href="https://appia.tistory.com/182" class="link_page"><span>534</span></a>
+    						
+    							<a href="https://appia.tistory.com/183" class="link_page"><span>535</span></a>
+    						
+    							<a href="https://appia.tistory.com/179" class="link_page"><span>536</span></a>
+    						
+    							<a href="https://appia.tistory.com/180" class="link_page"><span>537</span></a>
+    						
+    							<a class="link_page"><span class="selected">538</span></a>
+    						
+    							<a href="https://appia.tistory.com/177" class="link_page"><span>539</span></a>
+    						
+    							<a href="https://appia.tistory.com/176" class="link_page"><span>540</span></a>
+    						
+    							<a href="https://appia.tistory.com/174" class="link_page"><span>541</span></a>
+    						
+    							<a href="https://appia.tistory.com/175" class="link_page"><span>542</span></a>
+    						
+    							<a class="link_page"><span>···</span></a>
+    						
+    							<a href="https://appia.tistory.com/40" class="link_page"><span>650</span></a>
+    						
+                            <a href="https://appia.tistory.com/177" class="btn_next ">Next<span class="ico_skin ico_next"></span></a>
+    					</span>
+						</div>
+					
+				</div>
+			</div>
+		</div>
+		<hr class="hide">
+		<div id="dkFoot" role="contentinfo" class="area_foot">
+			<small class="info_copyright">
+				Blog is powered by
+				<a href="http://www.kakaocorp.com/" class="emph_t" target="_blank">kakao</a> / Designed by
+				<a href="http://www.tistory.com/" class="emph_t" target="_blank">Tistory</a>
+			</small>
+		</div>
+	</div>
+
+
+
+<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/script.js.다운로드"></script>
+<link rel="stylesheet" href="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/github.min.css">
+<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/highlight.min.js.다운로드"></script>
+<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/kotlin.min.js.다운로드"></script>
+<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/swift.min.js.다운로드"></script>
+<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/go.min.js.다운로드"></script>
+<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/scala.min.js.다운로드"></script>
+<script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/r.min.js.다운로드"></script>
+<script>hljs.initHighlightingOnLoad();</script><script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/wcslog.js.다운로드"></script>
+<script type="text/javascript">
+	if(!wcs_add) var wcs_add = {};
+	wcs_add["wa"] = encodeURI("9dc958b4750db0");
+	wcs_do();
+</script><script src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/search_dragselection.min.js.다운로드"></script>
+
+	<script>
+	    lightbox.option({
+			"fadeDuration": 200,
+		    "resizeDuration": 200,
+		    "wrapAround": false,
+			"albumLabel": "%1 / %2",
+			"fitImagesInViewport":true ,
+			"stopEvent": false
+	    })
+	</script>            <script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/tiara.min.js.다운로드"></script>
+            <script type="text/javascript">window.tiara = {"svcDomain":"user.tistory.com","section":"\uae00\ubdf0","trackPage":"\uae00\ubdf0_\ubcf4\uae30","page":"\uae00\ubdf0","key":"2919201-178","customProps":{"userId":0,"blogId":"2919201","role":"guest","filterTarget":false,"trackPage":"\uae00\ubdf0_\ubcf4\uae30","entryId":"178"},"entry":{"entryId":"178","categoryName":"Python \uc751\uc6a9","categoryId":"849954","author":"3706681","authorId":"3706681","image":"3706681","plink":"\/178","tags":["isalnum","isalpha","isdigit","python","\ubb38\uc790\uc5f4\uc22b\uc790\uc778\uc9c0\ud655\uc778\ud558\uae30","\ubb38\uc790\uc5f4\uc54c\ud30c\ubcb3\uc778\uc9c0\ud655\uc778\ud558\uae30","\ud30c\uc774\uc36c"],"key":"2919201-178"},"sentryDsn":"https:\/\/a53520229cd744e798d42900d76b0e2a@aem-collector.daumkakao.io\/713","kakaoAppKey":"b8aef3eeb03fa312b81795386484f051","appUserId":null};</script>
+            <script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/tiara.min.js(1).다운로드" defer=""></script>
+                        <script type="text/javascript">
+                window.roosevelt_params_queue = window.roosevelt_params_queue || [{channel_id: 'dk', channel_label: 'tistory'}];
+            </script>
+            <script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/roosevelt_dk_bt.js.다운로드" async=""></script><script type="text/javascript">if(window.console!=undefined){setTimeout(console.log.bind(console,"%cTISTORY","font:8em Arial;color:#EC6521;font-weight:bold"),0);setTimeout(console.log.bind(console,"%c  나를 표현하는 블로그","font:2em sans-serif;color:#333;"),0);}</script><iframe style="position:absolute;width:1px;height:1px;left:-100px;top:-100px" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/api.html" id="editEntry"></iframe>            <div class="#menubar menu_toolbar ">
+                                            <h2 class="screen_out">티스토리툴바</h2>
+                                            <div class="btn_tool">
+                    <button class="btn_menu_toolbar btn_subscription  #subscribe" data-blog-id="2919201" data-url="https://appia.tistory.com" data-device="web_pc">
+                        <strong class="txt_tool_id">앱피아</strong>
+                        <em class="txt_state">구독하기</em>
+                        <span class="img_common_tistory ico_check_type1"></span>
+                    </button>
+                </div>
+                                       </div>
+                                       <div class="#menubar menu_toolbar "></div>
+                                       <script type="text/javascript" src="./파이썬[Python] 알파벳_숫자인지 확인하기(isalpha, isdigit, isalnum)_files/menubar.min.js.다운로드"></script>        <div class="layer_tooltip">
+            <div class="inner_layer_tooltip">
+                <p class="desc_g"></p>
+            </div>
+        </div>
+        <div id="tistoryEtcLayer" class="layer_post" style="display: none;"></div><div id="tistorySnsLayer" class="layer_post" style="display: none;"><div class="bundle_post"><a href="https://appia.tistory.com/178#none" class="btn_mark" data-service="facebook"><span class="ico_sns ico_fb"></span>페이스북으로 공유</a><a href="https://appia.tistory.com/178#none" class="btn_mark" data-service="kakaotalk"><span class="ico_sns ico_kt"></span>카카오톡으로 공유</a><a href="https://appia.tistory.com/178#none" class="btn_mark" data-service="kakaostory"><span class="ico_sns ico_ks"></span>카카오스토리로 공유</a><a href="https://appia.tistory.com/178#none" class="btn_mark" data-service="twitter"><span class="ico_sns ico_tw"></span>트위터로 공유</a><a href="https://appia.tistory.com/178#none" class="btn_mark" data-service="url"><span class="ico_sns ico_url"></span>URL 복사</a><span class="ico_postbtn ico_arrbt"></span></div></div>
+
+
+<div id="lightboxOverlay" class="lightboxOverlay" style="display: none;"></div><div id="lightbox" class="lightbox" style="display: none;"><div class="lb-outerContainer"><div class="lb-container"><img class="lb-image" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="><div class="lb-nav"><a class="lb-prev" href="https://appia.tistory.com/178"></a><a class="lb-next" href="https://appia.tistory.com/178"></a></div><div class="lb-loader"><a class="lb-cancel"></a></div></div></div><div class="lb-dataContainer"><div class="lb-data"><div class="lb-details"><span class="lb-caption"></span><span class="lb-number"></span></div><div class="lb-closeContainer"><a class="lb-close"></a></div></div></div></div></body></html>

@@ -13,7 +13,7 @@ def solution(str1: str, str2: str) -> int:
         if re.findall('[a-z]{2}', str1[i:i + 2].lower())
     ]
     str2s = [
-        str2[i:i + 2].lwer()
+        str2[i:i + 2].lower()
         for i in range(len(str2) - 1)
         if re.findall('[a-z]{2}', str2[i:i + 2].lower())
     ]
