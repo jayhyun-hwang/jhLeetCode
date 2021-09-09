@@ -28,3 +28,5 @@ def solution(str1: str, str2: str) -> int:
     # 자카드 유사도 계산
     jaccard_sum = 1 if union == 0 else intersection / union
     return int(jaccard_sum * 65536)
+
+print(solution("FRANCE", "french"))
