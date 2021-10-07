@@ -10,7 +10,73 @@ import (
 func TestMain(t *testing.T) {
 	//fmt.Println(countOfAtoms("K4(ON(SO3)2)2"))
 	fmt.Println(sol([]int{0, 1, 1, 2, 3, 4, 5, 6, 6}))
+	copyTest()
+	copyTest2()
+}
 
+type strStruct struct {
+	strvar1 string
+	strvar2 string
+	strvar3 string
+}
+
+func copyTest() {
+	strStructList := []strStruct{}
+	strstruct := strStruct{}
+	for i := 1; i <= 100; i++ {
+		strval := strconv.Itoa(i)
+		switch i % 3 {
+		case 1:
+			strstruct = strStruct{}
+			strstruct.strvar1 = strval
+		case 2:
+			strstruct.strvar2 = strval
+		case 0:
+			strstruct.strvar3 = strval
+			strStructList = append(strStructList, strstruct)
+		}
+	}
+	fmt.Println(strStructList)
+
+	for _, val := range strStructList {
+		val.strvar1 += "#"
+		val.strvar2 += "#"
+		val.strvar3 += "#"
+		fmt.Println(val)
+	}
+	fmt.Println(strStructList)
+}
+
+type intStruct struct {
+	intvar1 int
+	intvar2 int
+	intvar3 int
+}
+
+func copyTest2() {
+	intStructList := []intStruct{}
+	intstruct := intStruct{}
+	for i := 1; i <= 100; i++ {
+		switch i % 3 {
+		case 1:
+			intstruct = intStruct{}
+			intstruct.intvar1 = i
+		case 2:
+			intstruct.intvar2 = i
+		case 0:
+			intstruct.intvar3 = i
+			intStructList = append(intStructList, intstruct)
+		}
+	}
+	fmt.Println(intStructList)
+
+	for _, val := range intStructList {
+		val.intvar1 += 1000
+		val.intvar2 += 1000
+		val.intvar3 += 1000
+		fmt.Println(val)
+	}
+	fmt.Println(intStructList)
 }
 
 //[0,0,1,1,2,3,4,5,6,6]
