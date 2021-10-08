@@ -9,9 +9,46 @@ import (
 //main
 func TestMain(t *testing.T) {
 	//fmt.Println(countOfAtoms("K4(ON(SO3)2)2"))
-	fmt.Println(sol([]int{0, 1, 1, 2, 3, 4, 5, 6, 6}))
-	copyTest()
-	copyTest2()
+	// fmt.Println(sol([]int{0, 1, 1, 2, 3, 4, 5, 6, 6}))
+	// copyTest()
+	// copyTest2()
+	fmt.Println("-------------------------------------------")
+	runeTest()
+	var val1 byte
+	var val2 rune
+	val1 = '2'
+	val2 = '√'
+	fmt.Printf("type = %T\n", val1)
+	fmt.Printf("type = %T\n", val2)
+}
+func runeTest() {
+	strVal := "hello√a"
+	strVal2 := "한국어√a"
+	fmt.Println("hello len= ", len(strVal))
+	fmt.Println("한국어 len= ", len(strVal2))
+	fmt.Println("\n for index 호출일 경우,")
+	fmt.Println(strVal)
+	for i := 0; i < len(strVal); i++ {
+		val := strVal[i]
+		// valType := reflect.TypeOf(val).Name()
+		fmt.Printf("idx %v, value = %v, type = %T\n", i, val, val)
+	}
+	fmt.Println(strVal2)
+	for i := 0; i < len(strVal2); i++ {
+		val := strVal2[i]
+		// valType := reflect.TypeOf(val).Name()
+		fmt.Printf("idx %v, value = %v, type = %T\n", i, val, val)
+	}
+	fmt.Println("\n for range 호출일 경우,")
+	fmt.Println(strVal)
+	for i, val := range strVal {
+		fmt.Printf("strVal %v idx, value = %v, type = %T\n", i, val, val)
+	}
+	fmt.Println(strVal2)
+	for i, val := range strVal2 {
+		fmt.Printf("strVal2 %v idx, value = %v, type = %T\n", i, val, val)
+	}
+
 }
 
 type strStruct struct {
