@@ -15,9 +15,6 @@ def solution(sortedArray: List[int], findValue: int) -> int:
             searchArr = searchArr[:idx]
         elif findValue > target:
             searchArr = searchArr[idx:]
-        
-        
-
 
     return answer
 
