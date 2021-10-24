@@ -1,6 +1,5 @@
 from typing import List
 
-
 def solution(sortedArray: List[int], findValue: int) -> int:
     answer = 0
 
