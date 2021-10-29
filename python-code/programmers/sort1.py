@@ -3,20 +3,24 @@ from typing import List
 
 def solution(numbers: List[int]) -> str:
     answer = ''
-    # 한자리 + 소수점으로 변환
-    for idx in range(len(numbers)):
-        if numbers[idx] >= 10:
-            numbers[idx] = str(numbers[idx])[0] + "." + str(numbers[idx])[1:]
 
-    # 정렬
-    numbers.sort(reverse=True)
-    # 합치기
+    sorted = []
     for val in numbers:
+        while True:
+            if val < 10 and val >= 1:
+                sorted.append(val)
+                break
+            else:
+                val = round(val / 10, 3)
+
+    sorted.sort(reverse=True)
+
+    for val in sorted:
         answer += str(val)
-    # . 없애기
-    answer = answer.replace(".","")
-    return answer
+    # print(sorted)
+    return answer.replace(".","")
+
 
 print(solution([6, 10, 2]))
-print(solution([3, 30, 34, 5, 9]))
-print(solution([0,1,10,111,213,1000,999,888,999]))
+# print(solution([3, 30, 34, 5, 9]))
+# print(solution([0,1,10,111,213,1000,999,888,999]))

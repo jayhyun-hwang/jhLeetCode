@@ -31,7 +31,7 @@ def solution(sortedArray: List[int], findValue: int) -> int:
             end = idx
             if end - start < 2:
                 if sortedArray[start] == findValue:
-                    answer == start
+                    answer = start
                     break
                 else:
                     return -1
