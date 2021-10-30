@@ -12,7 +12,7 @@ def solution(dartResult: str) -> int:
             nums[-1] **= 3
             nums.append(0)
         elif s == '*':
-            # 이전 값, 그 이전 값 모두 두 배 처리
+           # 이전 값, 그 이전 값 모두 두 배 처리
             nums[-2] *= 2
             if len(nums) > 2:
                 nums[-3] *= 2
@@ -21,7 +21,8 @@ def solution(dartResult: str) -> int:
         else:
             # 자릿수 올림
             nums[-1] = nums[-1] * 10 + int(s)
-    
+
     return sum(nums)
+
 
 print(solution('1D#2S*3S'))
