@@ -27,8 +27,9 @@ def solution(dartResult):
             scores[scoreIdx-1] *= -1
         else:
             scores[scoreIdx] += dartResult[i]
-    for n in scores:
-        answer += n
+    answer = sum(scores)
+    # for n in scores:
+    #     answer += n
     return answer
 
 print(solution("1T2D3D#"))
