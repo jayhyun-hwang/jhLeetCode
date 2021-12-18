@@ -1,5 +1,6 @@
 from typing import List
 
+# int to str. 오름차순 또는 내림차순으로 문자열로 이어붙여서 리스트 만들기
 
 def solution(startNumber: int, endNumber: int) -> List[str]:
     answer = []

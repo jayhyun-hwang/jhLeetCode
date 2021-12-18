@@ -1,6 +1,8 @@
 import collections
 from typing import List
 
+# 중복 count 제한으로 숫자 세기
+
 def solution(id_list: List[str], k: int) -> int:
     
     answer = 0

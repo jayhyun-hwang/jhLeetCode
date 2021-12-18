@@ -1,5 +1,7 @@
 from typing import List
 
+# int 리스트에서 findValue 찾기. 없을 시 -1 리턴
+
 def solution(sortedArray: List[int], findValue: int) -> int:
     if len(sortedArray) == 1:
         if sortedArray[0] == findValue:

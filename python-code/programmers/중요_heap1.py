@@ -1,7 +1,7 @@
 from typing import List
 import heapq
 
-
+# 정렬을 유지하는 스코빌 리스트
 def solution(scoville: List[int], K: int) -> int:
     if K < 1:
         return 0

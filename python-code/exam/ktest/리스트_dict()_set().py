@@ -1,4 +1,6 @@
-from typing import Dict, List
+from typing import List
+
+# 신고 리스트 보고 결과(횟수와 여부) 구현 - 중복 검사
 def solution(id_list: List[str], report: List[str], k: int):
     answer = []
 

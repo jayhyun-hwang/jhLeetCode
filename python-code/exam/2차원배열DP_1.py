@@ -1,5 +1,6 @@
 from typing import List
 
+# 핀볼 굴리기, 끝까지 가는 공의 개수, *은 한번 허용
 def solution(drum: List[str]) -> int:
     answer = 0
     array = [["" for col in range(len(drum))] for row in range(len(drum))]

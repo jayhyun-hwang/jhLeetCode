@@ -1,5 +1,7 @@
 from typing import List
 
+# 이름 중복검사해서 추천
+
 def solution(registered_list: List[str], new_id: str) -> str:
     answer = new_id
     strS = ""

@@ -1,5 +1,7 @@
 from typing import List
 
+# 전화번호부 prefix 검사
+
 def solution(phone_book: List[str]) -> bool:
     answer = True
 

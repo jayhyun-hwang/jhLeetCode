@@ -1,5 +1,6 @@
 from typing import List
 
+# 큰 수부터 정렬
 
 def solution(numbers: List[int]) -> str:
     answer = ''

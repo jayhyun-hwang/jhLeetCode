@@ -1,6 +1,8 @@
 import collections
 from typing import List
 
+# 컨닝 검사
+
 def solution(logs: List[str]) -> List[str]:
     
     answer = []
