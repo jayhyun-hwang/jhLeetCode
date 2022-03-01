@@ -1,6 +1,5 @@
 
 from cgi import MiniFieldStorage
-import collections
 from typing import List
 
 
@@ -12,7 +11,7 @@ def solution(n: int, wires: List[List[int]]) -> int:
         tempArr = wires.copy()
         tempArr.remove(val)
         minDif = n
-        for val2 in tempArr:
+        for _ in tempArr:
             forDif1 = searchTemp(val[0], tempArr, 1)
             forDif2 = searchTemp(val[1], tempArr, 1)
             dif = abs(forDif1 - forDif2)
