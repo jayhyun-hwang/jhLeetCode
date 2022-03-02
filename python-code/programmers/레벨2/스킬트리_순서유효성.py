@@ -1,11 +1,16 @@
 from typing import List
 
+# 주어진 스킬 순서로 스킬트리 유효성 검사
 def solution(skill: str, skill_trees: List[str]) -> int:
     answer = -1
+    # 순서 str를 리스트화
     skillOrder = list(skill)
-    skillOderedDict = dict()
-    for val in skill:
-        skillOderedDict[val] = True
+    # set이 더 간결해 보임
+    skillOderedDict = set(skill)
+    # 순서가 있는 스킬들을 dict에 삽입
+    # for val in skill:
+    #     # skillOderedDict[val] = True
+    #     skillOderedDict.add(val)
 
     print(skillOrder)
     print(skillOderedDict)
