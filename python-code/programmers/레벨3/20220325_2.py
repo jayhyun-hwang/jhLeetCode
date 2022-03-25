@@ -9,7 +9,7 @@ def solution(stones: List[int], k: int) -> int:
 
     def pass_one(stones: List[int], count: int):
         term = 0
-        # print(stones)
+        print(stones)
         for idx, val in enumerate(stones):
             if val > 0:
                 term = 0
