@@ -1,9 +1,11 @@
-birth_date = input("Please enter your birthdate in the format of (mmddyyyy) ")
+def solution(S, C):
+    tmp_list = []
+    cur_str = S
+    tmp_list.append(cur_str)
+    for i, ele in enumerate(C):
+        cur_num = 0
+        for ele in tmp_list:
+            
 
-birth_month = birth_date[0:2]
-birth_day = birth_date[2:4]
-birth_year = birth_date[4:8]
 
-print("Birth Month:", birth_month)
-print("Birth Day:", birth_day)
-print("Birth Year:", birth_year)
+print(solution("aabcddbc", [3, 5, 1, 4, 7]))  # 3

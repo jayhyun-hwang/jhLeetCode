@@ -1,21 +1,28 @@
-varSet = set([1, 2, 3, 4, 5,5,5,5,6])
-varSet.discard(7)
-print(varSet)
+def solution(S, C):
+    cur_str = S
+    for i, ele in enumerate(C):
+        print(i, ele)
+        cur_num = 0
+        def get_list(cur_num, cur_str):
+            if cur_num == ele:
+              cur_str = cur_str[:cur_num] + "$" + cur_str[cur_num:]
+              return cur_str
+            if cur_str[cur_num] != "$":
+                cur_num += 1
+                return get_list(cur_num, cur_str)
+        res = get_list(cur_num, cur_str)
+        print(res)
 
-tools = [0 for i in range(8)]
-print(tools)
+            
 
-vv = 87
-vv1 = vv // 10
-print(vv1)
-vv1 = vv / 10
-print(vv1)
-vv1 = vv % 10
-print(vv1)
-vv1 = 2 ** 10
-print(vv1)
+            
 
-varstr = "#####"
-print(varstr)
-varstr = varstr.replace("#",".")
-print(varstr)
+        # for _, char in enumerate(cur_str):
+        #     if cur_num == ele:
+        #         cur_str = cur_str[:cur_num] + "$" + cur_str[cur_num:]
+        #         break
+        #     if char != "$":
+        #         cur_num += 1
+        # splited = cur_str.split("$")
+
+print(solution("aabcddbc", [3, 5, 1, 4, 7]))  # 3
