@@ -3,18 +3,36 @@
 from typing import List
 
 def find_sum(idx: int, cur_sum: int, m_list: List[int]) -> int:
-    if idx >= len(m_list) - 2:
-        return cur_sum + m_list[idx]
-    
+    if idx >= len(m_list):
+        return cur_sum
     cur_sum += m_list[idx]
-    if idx == len(m_list) - 3:
-        return find_sum(idx + 2, cur_sum, m_list)
-    if m_list[idx + 2] >=
+    return find_sum(idx + 2, cur_sum, m_list)
     
 def solution(money: List[int]) -> int:
     answer = 0
     
-    res1 = find_sum(0, 0, money)
     res2 = find_sum(1, 0, money)
+    money.pop()
+    res1 = find_sum(0, 0, money)
+    answer = res1 if res1 > res2 else res2
     
     return answer
+  
+print(solution([1,2,3,1]))
+
+# def solution(money):
+#     dp1 = [0] * len(money)
+#     dp1[0] = money[0]
+#     dp1[1] = max(money[0], money[1])
+
+#     for i in range(2, len(money)-1): # 첫 집을 무조건 터는 경우
+#         dp1[i] = max(dp1[i-1], money[i]+dp1[i-2])
+
+#     dp2 = [0] * len(money)
+#     dp2[0] = 0
+#     dp2[1] = money[1]
+
+#     for i in range(2, len(money)): # 마지막 집을 무조건 터는 경우
+#         dp2[i] = max(dp2[i-1], money[i]+dp2[i-2])
+
+#     return max(max(dp1), max(dp2)) # 두 경우 중 최대
