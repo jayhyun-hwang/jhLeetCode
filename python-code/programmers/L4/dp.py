@@ -22,9 +22,10 @@ def solution(money: list[int]) -> int:
     return max(max(dp1), max(dp2))  # 두 경우 중 최대
 
 
-print(solution([1, 2, 3, 1]))
-print('============================================')
+# print(solution([1, 2, 3, 1]))
+# print('============================================')
 print(solution([10, 1, 20, 3, 40, 1000, 5]))
+# print([1] * 8)
 
 # def solution(money):
 #     dp1 = [0] * len(money)
@@ -42,3 +43,26 @@ print(solution([10, 1, 20, 3, 40, 1000, 5]))
 #         dp2[i] = max(dp2[i-1], money[i]+dp2[i-2])
 
 #     return max(max(dp1), max(dp2)) # 두 경우 중 최대
+
+# ------------------------------------------------------------
+
+def get_dp_res(target_list: list[int]) -> list[int]:
+    if len(target_list) < 3:
+        return max(target_list)
+    dp = [0] * len(target_list)
+    dp[0] = target_list[0]
+    dp[1] = max(target_list[0], target_list[1])
+    for i in range(2, len(target_list)):
+        dp[i] = max(dp[i-1], dp[i-2] + target_list[i])
+    return max(dp)
+    
+
+def solution2(money: list[int]) -> list[int]:
+    last = money.pop()
+    res1 = get_dp_res(money)
+    money.append(last)
+    money[0] = 0
+    res2 = get_dp_res(money)
+    return max(res1, res2)
+    
+    
