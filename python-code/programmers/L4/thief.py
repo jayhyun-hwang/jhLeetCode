@@ -1,30 +1,27 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/42897
 
+# def solution(money: list[int]) -> int:
+#     dp1 = [0] * len(money)
+#     dp1[0] = money[0]
+#     dp1[1] = max(money[0], money[1])
+#     print(money)
+#     for i in range(2, len(money) - 1):  # 첫 집을 무조건 터는 경우
+#         dp1[i] = max(dp1[i - 1], money[i] + dp1[i - 2])
+#         print('i: ' + str(i) + ', money: ' + str(money[i]) + ', dp1: ' + str(dp1[i]))
+#     print('-----------')
+#     print(dp1)
+#     print('-----------')
+#     dp2 = [0] * len(money)
+#     dp2[0] = 0
+#     dp2[1] = money[1]
 
-def solution(money: list[int]) -> int:
-    dp1 = [0] * len(money)
-    dp1[0] = money[0]
-    dp1[1] = max(money[0], money[1])
-    print(money)
-    for i in range(2, len(money) - 1):  # 첫 집을 무조건 터는 경우
-        dp1[i] = max(dp1[i - 1], money[i] + dp1[i - 2])
-        print('i: ' + str(i) + ', money: ' + str(money[i]) + ', dp1: ' + str(dp1[i]))
-    print('-----------')
-    print(dp1)
-    print('-----------')
-    dp2 = [0] * len(money)
-    dp2[0] = 0
-    dp2[1] = money[1]
+#     for i in range(2, len(money)):  # 마지막 집을 무조건 터는 경우
+#         dp2[i] = max(dp2[i - 1], money[i] + dp2[i - 2])
 
-    for i in range(2, len(money)):  # 마지막 집을 무조건 터는 경우
-        dp2[i] = max(dp2[i - 1], money[i] + dp2[i - 2])
-
-    return max(max(dp1), max(dp2))  # 두 경우 중 최대
-
+#     return max(max(dp1), max(dp2))  # 두 경우 중 최대
 
 # print(solution([1, 2, 3, 1]))
 # print('============================================')
-print(solution([10, 1, 20, 3, 40, 1000, 5]))
 # print([1] * 8)
 
 # def solution(money):
@@ -53,16 +50,17 @@ def get_dp_res(target_list: list[int]) -> list[int]:
     dp[0] = target_list[0]
     dp[1] = max(target_list[0], target_list[1])
     for i in range(2, len(target_list)):
-        dp[i] = max(dp[i-1], dp[i-2] + target_list[i])
+        dp[i] = max(dp[i - 1], dp[i - 2] + target_list[i])
     return max(dp)
-    
 
-def solution2(money: list[int]) -> list[int]:
+
+def solution(money: list[int]) -> list[int]:
     last = money.pop()
     res1 = get_dp_res(money)
     money.append(last)
     money[0] = 0
     res2 = get_dp_res(money)
     return max(res1, res2)
-    
-    
+
+print(solution([1, 2, 3, 1])) # 4
+print(solution([10, 1, 20, 3, 40, 1000, 5])) # 1030
