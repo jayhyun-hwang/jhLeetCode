@@ -1,6 +1,7 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/118670
 
 from typing import List
+from collections import deque
 import sys
 
 sys.setrecursionlimit(10**6)
@@ -33,8 +34,12 @@ def rotate(rc: List[List[int]]):
 
 
 def shift_row(rc: List[List[int]]):
-    last = rc.pop()
-    return [last] + rc
+    q = deque(rc)
+    last = q.pop()
+    # last = rc.pop()
+    q.appendleft(last)
+    return list(q)
+    # return [last] + rc
 
 
 def solution(rc: List[List[int]], operations: List[str]) -> List[List[int]]:
