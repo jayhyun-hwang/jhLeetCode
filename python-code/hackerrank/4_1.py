@@ -19,6 +19,8 @@ from typing import List
 def gridChallenge(grid: List[str]) -> str:
     # Write your code here
     for i, val in enumerate(grid):
+        print(val)
+        print(sorted(val))
         grid[i] = sorted(val)
     print(grid)
     for idx, _ in enumerate(grid[0]):
