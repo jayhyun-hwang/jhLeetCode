@@ -8,11 +8,9 @@ def solution(food_times, k):
     answer = 0
     h = []
     for i in range(len(food_times)):
-        heapq.heappush(h, food_times[i])
-
+        heapq.heappush(h, [food_times[i], i])
     print(h)
-    print(heapq.heapreplace())
-    print(h)
+    
 
     return answer
 
