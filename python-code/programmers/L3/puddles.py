@@ -1,4 +1,6 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/42898
+# dp == 점화식 == reduce 처럼 생각하자
+
 import sys
 
 sys.setrecursionlimit(10**6)
@@ -26,3 +28,27 @@ def solution(m, n, puddles):
 
 
 print(solution(4, 3, [[2, 2]]))  # 4
+
+
+# answer
+def solution2(m, n, puddles):  #m는열 n는 행
+    map = [[0 for _ in range(m + 1)] for _ in range(n + 1)]
+    map[1][1] = 1
+    print('--------------------')
+    print(map)
+    print('--------------------')
+    for x in range(1, n + 1):
+        for y in range(1, m + 1):
+            if x == 1 and y == 1:
+                continue
+            # if [y,x] in puddles:
+            #     map[x][y] =0
+            if y == puddles[0][1] and x == puddles[0][0]:  # 웅덩이 위치의 경우 값을 0으로
+                map[x][y] = 0
+            else:
+                map[x][y] = (map[x - 1][y] + map[x][y - 1]) % 1000000007
+    print(map)
+    return map[n][m]
+
+
+print(solution2(4, 3, [[2, 2]]))  # 4
