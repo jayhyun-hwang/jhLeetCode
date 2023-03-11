@@ -15,17 +15,37 @@ def go_to_next(col, row, last_col, last_row, pud_set, res_list):
     go_to_next(col, row + 1, last_col, last_row, pud_set, res_list)
 
 
-def solution(m, n, puddles):
-    answer = 0
-    puddle_set = set()
-    res_list = []
-    for ele in puddles:
-        puddle_set.add(tuple(ele))
-    go_to_next(1, 1, m, n, puddle_set, res_list)
-    count = len(res_list)
-    answer = count % 1000000007
-    return answer
+# def solution(m, n, puddles):
+#     answer = 0
+#     puddle_set = set()
+#     res_list = []
+#     for ele in puddles:
+#         puddle_set.add(tuple(ele))
+#     go_to_next(1, 1, m, n, puddle_set, res_list)
+#     count = len(res_list)
+#     answer = count % 1000000007
+#     return answer
 
+def solution(m, n, puddles):
+    map = [[0 for y in range(m)] for x in range(n)]
+    print(map)
+    puddle_set = set()
+    for p in puddles:
+        puddle_set.add((p[0], p[1]))
+    print(puddle_set)
+    map[0][0] = 1
+    puddle_set.add((0,0))
+    print(map)
+    for row_idx, row in enumerate(map):
+        for col_idx, col in enumerate(row):
+            if (row_idx, col_idx) in puddles:
+                continue
+            pre_col = map[row_idx][col_idx - 1] % 1000000007 if col_idx > 0 else 0
+            pre_row = map[row_idx - 1][col_idx] % 1000000007 if row_idx > 0 else 0
+            print(pre_col)
+            map[row_idx][col_idx] = pre_col + pre_row % 1000000007
+    print(map)
+    return map.pop().pop()
 
 print(solution(4, 3, [[2, 2]]))  # 4
 
@@ -51,4 +71,4 @@ def solution2(m, n, puddles):  #m는열 n는 행
     return map[n][m]
 
 
-print(solution2(4, 3, [[2, 2]]))  # 4
+# print(solution2(4, 3, [[2, 2]]))  # 4
