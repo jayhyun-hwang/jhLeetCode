@@ -1,27 +1,21 @@
 # https://school.programmers.co.kr/learn/courses/30/lessons/42579
 def solution(genres, plays):
     answer = []
-    music_dict = dict()
+    musics = dict()
+    genres_total = dict()
     for i in range(len(genres)):
-        if genres[i] not in music_dict:
-            music_dict[genres[i]] = dict()
-            music_dict[genres[i]]['total'] = 0
-        music_dict[genres[i]][i] = plays[i]
-        music_dict[genres[i]]['total'] += plays[i]
-    # print(music_dict.items())
-    print(music_dict)
-    music_dict = dict(
-        sorted(music_dict.items(), key=lambda item: -item[1]['total']))
-    print(music_dict)
-    # print(music_dict.items())
-    for m in music_dict.items():
-        # print(m)
-        # print(m[1]['total'])
-        sort_music = sorted(m[1].items(), key=lambda item: -item[1])
-        print(sort_music)
-        answer.append(sort_music[1][0])
-        if len(sort_music) >= 3:
-            answer.append(sort_music[2][0])
+        if genres[i] not in musics:
+            musics[genres[i]] = dict()
+        musics[genres[i]][i] = plays[i]
+        if genres[i] not in genres_total:
+            genres_total[genres[i]] = 0
+        genres_total[genres[i]] += plays[i]
+    sorted_g = sorted(genres_total.items(), key=lambda x: -x[1])
+    for ele in sorted_g:
+        sorted_m = sorted(musics[ele[0]].items(), key=lambda x: -x[1])
+        answer.append(sorted_m[0][0])
+        if len(sorted_m) > 1:
+            answer.append(sorted_m[1][0])
     return answer
 
 
