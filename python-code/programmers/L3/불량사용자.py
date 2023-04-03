@@ -14,8 +14,8 @@ import sys
 sys.setrecursionlimit(10 ** 9)
 
 def is_match(t_id, pattern):
-    l = len(t_id)
-    if l != len(pattern):
+    l = len(pattern)
+    if l != len(t_id):
         return False
     for i in range(l):
         if pattern[i] == '*':
