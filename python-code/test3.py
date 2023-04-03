@@ -14,3 +14,16 @@ print(q, r)
 print(q, r)
 a = divmod(100, 27)
 print(a)
+
+set1 = set([1,2,3,4,5])
+set2 = set([5,4,3,2,1])
+
+if set1 == set2:
+    print('true')
+else:
+    print('false')
+
+if set1 is set2:
+    print('true2')
+else:
+    print('false2')
