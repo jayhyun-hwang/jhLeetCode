@@ -14,13 +14,13 @@ def find_network(data_list, idx, visited):
 
 def solution(n, computers):
     answer = 0
-    complited = set()
+    completed = set()
     network = 0
     for idx, com in enumerate(computers):
-        if idx in complited:
+        if idx in completed:
             continue
         network += 1
-        find_network(computers, idx, complited)
+        find_network(computers, idx, completed)
     answer = network
     return answer
 
