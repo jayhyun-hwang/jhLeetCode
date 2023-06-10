@@ -1,3 +1,8 @@
+import sys
+
+sys.setrecursionlimit(10**6)
+
+
 def is_one_diff(word, target):
     result = False
     diff = 0
@@ -11,26 +16,30 @@ def is_one_diff(word, target):
     return result
 
 
-def find_target(word_list, cur_word, target_word, cur_count, min_num):
-    if cur_word == target_word:
-        return cur_count if cur_count < min_num else min_num
-    for idx, val in enumerate(word_list):
-        if is_one_diff(cur_word, val) == False:
+def find_target(org, target, word_list, visited, cur_count, count_list):
+    if org == target:
+        count_list.append(cur_count)
+        return
+    for idx, word in enumerate(word_list):
+        if idx in visited or is_one_diff(org, word) == False:
             continue
-        print(word_list)
-        print(word_list[idx])
-        new_word_list = word_list.copy()
-        del new_word_list[idx]
-        min_num = find_target(new_word_list, val, target_word, cur_count + 1,
-                              min_num)
-    return min_num
+        new_visited = visited.copy()
+        new_visited.add(idx)
+        find_target(word, target, word_list, new_visited, cur_count + 1,
+                    count_list)
+    return
 
 
 def solution(begin, target, words):
     answer = 0
     if target not in words:
         return answer
-    min_num = len(words) + 1
-    min_num = find_target(words, begin, target, 0, min_num)
-    answer = min_num if min_num <= len(words) else answer
+    count_list = []
+    visited = set()
+    find_target(begin, target, words, visited, 0, count_list)
+    answer = min(count_list)
     return answer
+
+
+print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))  # 4
+print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log"]))  # 0
