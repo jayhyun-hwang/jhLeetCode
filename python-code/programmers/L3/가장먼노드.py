@@ -8,37 +8,13 @@ def solution(n, edge):
     if n <= 2:
         return 1
     node_arr = [[0 for i in range(n + 1)] for j in range(n + 1)]
-    distance_arr = [-1 for i in range(n + 1)]
+    distance_arr = [0 for i in range(n + 1)]
     for i, j in edge:
         node_arr[i][j] = 1
         node_arr[j][i] = 1
-    # print(node_arr)
-    def find_distance(cur, end, dist, visited):
-        # print(cur, end, dist, visited)
-        if cur == end:
-            if distance_arr[end] < 0:
-                distance_arr[end] = dist
-            else:
-                distance_arr[end] = min(distance_arr[end], dist)
-            return
-        visited.add(cur)
-        if node_arr[cur][end] == 1:
-            return find_distance(end, end, dist + 1, visited)
-        for idx, next_node in enumerate(node_arr[cur]):
-            if idx < 1 or next_node < 1 or idx in visited:
-                continue
-            v = set()
-            v.add(cur)
-            find_distance(idx, end, dist + 1, v)
-    
+    print(node_arr)
     for i in range(1, n + 1):
-        print(i)
-        find_distance(1, i, 0, set())
-    print(distance_arr)
-    max_dist = max(distance_arr)
-    for val in distance_arr:
-        if val == max_dist:
-            answer += 1
+        
     return answer
 
 
