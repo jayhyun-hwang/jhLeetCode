@@ -3,18 +3,23 @@ import sys
 
 sys.setrecursionlimit(10**6)
 
+INF = int(1e9)
 def solution(n, edge):
     answer = 0
     if n <= 2:
         return 1
     node_arr = [[0 for i in range(n + 1)] for j in range(n + 1)]
-    distance_arr = [0 for i in range(n + 1)]
+    distance_arr = [INF for i in range(n + 1)]
     for i, j in edge:
         node_arr[i][j] = 1
         node_arr[j][i] = 1
     print(node_arr)
+    visited = set()
     for i in range(1, n + 1):
-        
+        visited.add(i)
+        for j in range(1, n + 1):
+            if node_arr[i][j] == 1:
+
     return answer
 
 
