@@ -1,34 +1,36 @@
-def find_parent(p, tree):
-    if p == tree[p]:
-        return p
-    return find_parent(tree[p], tree)
+def find(a, parents):
+    if parents[a] == a:
+        return a
+    parents[a] = find(parents[a], parents)
+    return parents[a]
 
-def union_node(a, b, tree):
-    p = min(find_parent(a, tree), find_parent(b, tree))
-    tree[a] = p
-    tree[b] = p
+
+def union(a, b, parents):
+    a_parent = find(a, parents)
+    b_parent = find(b, parents)
+    u_parent = min(a_parent, b_parent)
+    parents[a_parent] = u_parent
+    parents[b_parent] = u_parent
+
 
 def solution(n, costs):
     if n < 1:
         return 0
     answer = 0
-    print(costs)
-    costs.sort(key=lambda x : x[2])
-    print(costs)
-    parent_tree = []
-    remain_set = set()
+    # costs.sort(key=lambda x : x[2])
+    sorted_costs = sorted(costs, key=lambda x: x[2])
+    parent_arr = []
     for i in range(n):
-        remain_set.add(i)
-        parent_tree.append(i)
-    print(remain_set)
-    union_node(costs[0][0], costs[0][1], parent_tree)
-    root = parent_tree[costs[0][0]]
-    cur_cost = costs[0][2]
-    for ele in costs:
-        p1 = find_parent(ele[0], parent_tree)
-        p2 = find_parent(ele[1], parent_tree)
-        if p1 != root or p2 != root:
-            union_node(ele[0], ele[1], parent_tree)
-            cur_cost += ele[2]
-    answer = cur_cost
+        parent_arr.append(i)
+    union(sorted_costs[0][0], sorted_costs[0][1], parent_arr)
+    cost = sorted_costs[0][2]
+    for ele in sorted_costs:
+        if find(ele[0], parent_arr) != find(ele[1], parent_arr):
+            union(ele[0], ele[1], parent_arr)
+            cost += ele[2]
+    answer = cost
     return answer
+
+
+print(solution(4, [[0, 1, 1], [0, 2, 2], [1, 2, 5], [1, 3, 1], [2, 3, 8]])) # 4
+print(solution(6, [[0, 1, 1], [1, 2, 2], [2, 3, 3], [0, 3, 7], [3, 5, 4], [3, 4, 6], [4, 5, 2]])) # 12
