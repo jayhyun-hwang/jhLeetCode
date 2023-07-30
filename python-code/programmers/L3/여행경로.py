@@ -18,13 +18,17 @@ def solution(tickets):
     while stack:
         vertex = stack.pop()
         if vertex in visited and 1 > visited[vertex]:
-            continue    
+            continue
         route.append(vertex)
-        visited[vertex] -=1
+        visited[vertex] -= 1
         for ele in air_dict[vertex]:
             stack.append(ele)
     print(route)
     return answer
 
-print(solution([["ICN", "JFK"], ["HND", "IAD"], ["JFK", "HND"]]	)) # ["ICN", "JFK", "HND", "IAD"]
-print(solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"], ["ATL","SFO"]])) # ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"]
+
+print(solution([["ICN", "JFK"], ["HND", "IAD"],
+                ["JFK", "HND"]]))  # ["ICN", "JFK", "HND", "IAD"]
+print(
+    solution([["ICN", "SFO"], ["ICN", "ATL"], ["SFO", "ATL"], ["ATL", "ICN"],
+              ["ATL", "SFO"]]))  # ["ICN", "ATL", "ICN", "SFO", "ATL", "SFO"]
