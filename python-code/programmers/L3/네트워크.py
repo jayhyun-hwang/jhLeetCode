@@ -1,25 +1,27 @@
 import sys
 
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**9)
 
 
 def find_network(idx, computers, visited):
-    for i, val in enumerate(computers[idx]):
-        if val == 0 or i in visited:
+    for i, linked in enumerate(computers[idx]):
+        if linked != 1 or i in visited:
             continue
         visited.add(i)
         find_network(i, computers, visited)
 
 
 def solution(n, computers):
-    answer = 0
+    if n == 1:
+        return 1
     visited = set()
     network_count = 0
-    for i, com in enumerate(computers):
+    for i in range(n):
         if i in visited:
             continue
         network_count += 1
         find_network(i, computers, visited)
+
     answer = network_count
     return answer
 
