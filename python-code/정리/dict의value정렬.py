@@ -10,7 +10,10 @@ def solution(money: int, costs: List[int]) -> int:
     unitCost[50] = costs[3] / 50
     unitCost[100] = costs[4] / 100
     unitCost[500] = costs[5] / 500
+    print(unitCost.keys())
+    print(unitCost)
     unitCost = sorted(unitCost.items(), key = lambda item: item[1])
+    print(unitCost)
 
     totalCost = 0
     tempMoney = money
