@@ -16,7 +16,7 @@ print(solution([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))  # 30
 
 def solution2(triangle):
     if (len(triangle) <= 1):
-        return triangle.pop()
+        return triangle.pop().pop()
     answer = 0
     for i, row in enumerate(triangle):
         if i < 1:
@@ -29,3 +29,20 @@ def solution2(triangle):
     return answer
   
 print(solution2([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))  # 30
+
+def solution3(triangle):
+    if len(triangle) == 1:
+        return triangle.pop().pop()
+    answer = 0
+    for row_idx, row in enumerate(triangle):
+        if row_idx == 0:
+            continue
+        pre_row = triangle[row_idx - 1]
+        for col_idx, ele in enumerate(row):
+            left = pre_row[max(col_idx  - 1, 0)]
+            right = pre_row[min(col_idx, len(pre_row) - 1)]
+            triangle[row_idx][col_idx] = ele + max(left, right)
+    answer = max(triangle.pop())
+    return answer
+
+print(solution3([[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]))  # 30
