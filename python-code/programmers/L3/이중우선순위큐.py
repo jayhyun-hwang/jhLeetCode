@@ -61,6 +61,35 @@ def solution2(operations):
     answer.append(heapq.heappop(min_heap))
     return answer
 
+
+def solution3(operations):
+    max_heap = []
+    min_heap = []
+    for op in operations:
+        [cmd, num] = op.split(" ")
+        num = int(num)
+        if cmd == "I":
+            heapq.heappush(min_heap, num)
+            heapq.heappush(max_heap, -1 * num)
+            continue
+        # cmd === "D"
+        if len(min_heap) < 1:
+            continue
+        if num == -1:
+            popped = min_heap
+            target = max_heap
+        elif num == 1:
+            popped = max_heap
+            target = min_heap
+        heapq.heappop(popped)
+        target.clear()
+        for ele in popped:
+            heapq.heappush(target, -1 * ele)
+    if len(min_heap) < 1:
+        return [0, 0]
+    answer = [-1 * heapq.heappop(max_heap), heapq.heappop(min_heap)]
+    return answer
+
 # [0,0]
 print(solution(["I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"]))
 
@@ -77,6 +106,17 @@ print(solution2(["I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"]))
 # [333, -45]
 print(
     solution2([
+        "I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1",
+        "I 333"
+    ]))
+
+
+# [0,0]
+print(solution3(["I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"]))
+
+# [333, -45]
+print(
+    solution3([
         "I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1",
         "I 333"
     ]))
