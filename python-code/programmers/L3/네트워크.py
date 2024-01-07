@@ -25,5 +25,30 @@ def solution(n, computers):
     answer = network_count
     return answer
 
+# import sys
+
+# sys.setrecursionlimit(10 ** 9)
+def find_path(index, computer_list, visited):
+    visited.add(index)
+    cur = computer_list[index]
+    for i, com in enumerate(cur):
+        if com == 0 or i in visited:
+            continue
+        find_path(i, computer_list, visited)
+
+
+def solution2(n, computers):
+    if n == 1:
+        return 1
+    count = 0
+    visited = set()
+    for idx in range(n):
+        if idx in visited:
+            continue
+        count += 1
+        find_path(idx, computers, visited)
+    return count
+
 
 print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))  # 2
+print(solution2(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))  # 2
