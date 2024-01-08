@@ -22,10 +22,25 @@ def solution2(n, s):
         result[idx] += 1
     return result
 
+def solution3(n, s):
+    if n > s:
+        return [-1]
+    answer = []
+    q = s // n
+    r = s % n
+    for _ in range(n - r):
+        answer.append(q)
+    for _ in range(r):
+        answer.append(q + 1)
+    return answer
+
 
 print(
     solution(13, 795463)
 )  #	[61189, 61189, 61189, 61189, 61189, 61189, 61189, 61190, 61190, 61190, 61190, 61190, 61190]
 print(
     solution2(13, 795463)
+)  #	[61189, 61189, 61189, 61189, 61189, 61189, 61189, 61190, 61190, 61190, 61190, 61190, 61190]
+print(
+    solution3(13, 795463)
 )  #	[61189, 61189, 61189, 61189, 61189, 61189, 61189, 61190, 61190, 61190, 61190, 61190, 61190]
