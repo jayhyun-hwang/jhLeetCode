@@ -49,6 +49,28 @@ def solution2(n, computers):
         find_path(idx, computers, visited)
     return count
 
+def solution3(n, computers):
+    visited = set()
+    count = 0
+    for idx, com in enumerate(computers):
+        if idx in visited:
+            continue
+        count += 1
+        visited.add(idx)
+        stack = []      
+        for i, ele in enumerate(com):
+            if ele == 1:
+                stack.append(i)
+        while stack:
+            vertex = stack.pop()
+            if vertex in visited:
+                continue
+            visited.add(vertex)
+            for j, val in enumerate(computers[vertex]):
+                if val == 1:
+                    stack.append(j)
+    return count
 
 print(solution(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))  # 2
 print(solution2(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))  # 2
+print(solution3(3, [[1, 1, 0], [1, 1, 0], [0, 0, 1]]))  # 2
