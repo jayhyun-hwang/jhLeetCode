@@ -18,3 +18,16 @@ def solution(phone_book: List[str]) -> bool:
             if val[:i] in dict1:
                 return False
     return answer
+
+
+def solution2(phone_book):
+    if len(phone_book) == 1:
+        return True
+    l = len(phone_book)
+    phone_book.sort()
+    for i, ele in enumerate(phone_book):
+        if i >= l - 1:
+            break
+        if phone_book[i + 1].startswith(ele):
+            return False
+    return True
