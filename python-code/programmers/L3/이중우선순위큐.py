@@ -1,5 +1,6 @@
 import heapq
 
+
 def solution(operations):
     answer = []
     min_heap = []
@@ -24,9 +25,11 @@ def solution(operations):
             max_heap = []
             for ele in min_heap:
                 heapq.heappush(max_heap, -ele)
-    answer = [0,0] if len(min_heap) < 1 else [-(heapq.heappop(max_heap)), heapq.heappop(min_heap)]
-            
+    answer = [0, 0] if len(
+        min_heap) < 1 else [-(heapq.heappop(max_heap)), heapq.heappop(min_heap)]
+
     return answer
+
 
 def solution2(operations):
     answer = []
@@ -90,6 +93,7 @@ def solution3(operations):
     answer = [-1 * heapq.heappop(max_heap), heapq.heappop(min_heap)]
     return answer
 
+
 # [0,0]
 print(solution(["I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"]))
 
@@ -117,6 +121,47 @@ print(solution3(["I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"]))
 # [333, -45]
 print(
     solution3([
+        "I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1",
+        "I 333"
+    ]))
+
+
+def solution4(operations):
+    min_heap = []
+    max_heap = []
+
+    for op in operations:
+        [command, num_str] = op.split(" ")
+        num = int(num_str)
+        print(command, num_str)
+        if command == "I":
+            heapq.heappush(min_heap, num)
+            heapq.heappush(max_heap, -num)
+            continue
+        if command == "D":
+            if len(min_heap) < 1:
+                continue
+            if num > 0:
+                heapq.heappop(max_heap)
+                min_heap = []
+                for val in max_heap:
+                    heapq.heappush(min_heap, -val)
+            else:
+                heapq.heappop(min_heap)
+                max_heap = []
+                for val in min_heap:
+                    heapq.heappush(max_heap, -val)
+    if len(min_heap) < 1:
+        return [0, 0]
+    return [max(min_heap), min(min_heap)]
+
+
+# [0,0]
+print(solution4(["I 16", "I -5643", "D -1", "D 1", "D 1", "I 123", "D -1"]))
+
+# [333, -45]
+print(
+    solution4([
         "I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1",
         "I 333"
     ]))

@@ -1,3 +1,8 @@
+# dict 순회
+# for k in dict_name:
+# for k in dict_name.keys():
+# for v in dict_name.values():
+# for k, v in dict_name.items():
 def solution(clothes):
     c_dict = dict()
     for name, key in clothes:
