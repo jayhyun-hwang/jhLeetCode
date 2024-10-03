@@ -7,5 +7,11 @@
 # @lc code=start
 class Solution:
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        
-# @lc code=end 
+        for row in reversed(matrix):
+            if row[0] > target:
+                continue
+            for col in row:
+                if col == target:
+                    return True
+        return False
+# @lc code=end
