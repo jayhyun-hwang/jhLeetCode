@@ -12,3 +12,14 @@ class Solution:
 s = Solution()
 print(s.climbStairs(2))
 print(s.climbStairs(3))
+
+# class Solution:
+#     def climbStairs(self, n: int) -> int:
+#         previous_1 = 0
+#         previous_2 = 1
+#         current = 0
+#         for _ in range(n):
+#             current = previous_1 + previous_2
+#             previous_1 = previous_2
+#             previous_2 = current
+#         return current
